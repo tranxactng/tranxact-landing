@@ -213,13 +213,14 @@
   .infra-note{margin-top:28px;font-size:15px;color:var(--muted);max-width:600px;line-height:1.6;
     border-left:2px solid var(--accent);padding-left:16px;}
 
-  /* Coming soon dimmed card */
-  .coming-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);
-    padding:40px;opacity:0.62;margin-top:50px;position:relative;overflow:hidden;}
-  .coming-tag{position:absolute;top:24px;right:24px;font-size:11px;font-weight:700;background:var(--surface-2);
-    border:1px solid var(--border);padding:5px 12px;border-radius:999px;color:var(--muted);}
-  .coming-card h3{font-size:22px;font-weight:800;margin-bottom:10px;}
-  .coming-card p{font-size:15px;color:var(--muted);max-width:480px;line-height:1.6;}
+  /* Live feature card — same shape as a dimmed coming-soon card would have,
+     but full opacity, accent border, since this one is genuinely live. */
+  .live-card{background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);
+    padding:40px;margin-top:50px;position:relative;overflow:hidden;}
+  .live-card h3{font-size:22px;font-weight:800;margin-bottom:10px;}
+  .live-card p{font-size:15px;color:var(--muted);max-width:480px;line-height:1.6;}
+  .live-card a{color:var(--accent);font-weight:600;font-size:14px;display:inline-block;margin-top:18px;text-decoration:none;}
+  .live-card a:hover{text-decoration:underline;}
 
   /* Product features grid */
   .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;}
@@ -366,7 +367,7 @@
 
 <section class="stats-bar reveal-stagger">
   <div class="wrap stats-grid">
-    <div><div class="stat-num">4</div><div class="stat-label">Cryptocurrencies supported</div></div>
+    <div><div class="stat-num">5</div><div class="stat-label">Cryptocurrencies supported</div></div>
     <div><div class="stat-num">₦0</div><div class="stat-label">Fees sending to other Tranxact users</div></div>
     <div><div class="stat-num">100%</div><div class="stat-label">Transactions verified on a double-entry ledger</div></div>
   </div>
@@ -376,7 +377,7 @@
   <div class="wrap">
     <span class="eyebrow">Core Value</span>
     <h2 class="section-title">Accept Crypto. Spend Naira.</h2>
-    <p class="section-sub">Tranxact turns crypto into everyday money. Receive BTC, ETH, USDT, or SOL — and get naira instantly ready to spend.</p>
+    <p class="section-sub">Tranxact turns crypto into everyday money. Receive BTC, ETH, USDT, USDC, or SOL — and get naira instantly ready to spend.</p>
     <ul class="bullet-list">
       <li><span class="bullet-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Send to any bank account</li>
       <li><span class="bullet-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Pay bills</li>
@@ -497,13 +498,14 @@
       <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>BTC</div>
       <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>ETH</div>
       <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>USDT</div>
+      <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>USDC</div>
       <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>SOL</div>
     </div>
     <p class="infra-note">We handle confirmation and conversion — you receive clean, spendable balance.</p>
-    <div class="coming-card">
-      <span class="coming-tag">Coming Soon</span>
+    <div class="live-card">
       <h3>Pay with Tranxact</h3>
-      <p>Let customers pay directly on your website or app using Tranxact.</p>
+      <p>Let customers pay directly on your website or app using Tranxact — grab a checkout button for any of your payment links, same rates and tracking as everything else.</p>
+      <a href="https://pay.tranxact.co">Get your embed code →</a>
     </div>
   </div>
 </section>
