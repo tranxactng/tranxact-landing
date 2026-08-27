@@ -125,6 +125,9 @@
   .btn-teal{background:var(--teal);color:#0A0A0B;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;
     display:inline-flex;align-items:center;gap:8px;transition:transform .2s var(--ease),box-shadow .2s var(--ease);}
   .btn-teal:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(47,217,168,0.18);}
+  .btn-dark{background:var(--surface-2);color:#fff;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;
+    border:1px solid var(--border);display:inline-flex;align-items:center;gap:8px;transition:all .2s var(--ease);}
+  .btn-dark:hover{transform:translateY(-2px);border-color:#3a3a40;box-shadow:0 10px 30px rgba(0,0,0,0.4);}
 
   .hero-cta{display:flex;flex-direction:column;gap:6px;}
   .hero-cta-sub{font-size:12.5px;color:var(--muted);padding-left:4px;}
@@ -383,7 +386,7 @@
     <div class="nav-menu-links">
       <a href="#crypto-convert" onclick="toggleNavMenu(false)">Product</a>
       <a href="#pay-anywhere" onclick="toggleNavMenu(false)">Accept Payments</a>
-      <a href="#storefront" onclick="toggleNavMenu(false)">Storefront</a>
+      <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" onclick="toggleNavMenu(false)">Business</a>
       <a href="https://app.tranxact.co" onclick="toggleNavMenu(false)">Tip Me</a>
       <a href="#infrastructure" onclick="toggleNavMenu(false)">Infrastructure</a>
       <a href="blog/index.html" onclick="toggleNavMenu(false)">Blog</a>
@@ -566,7 +569,10 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tranxact handles checkout and settlement, start to finish</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No website, no developer: set it up from your dashboard</li>
       </ul>
-      <a href="https://pay.tranxact.co" class="btn-primary" style="margin-top:28px;">Set up your storefront <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;">
+        <a href="https://pay.tranxact.co" class="btn-primary">Set up your storefront <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" class="btn-secondary">Explore Business</a>
+      </div>
     </div>
     <div class="split-visual">
       <div class="pay-modal">
@@ -782,6 +788,7 @@
     <div class="final-btns">
       <a href="https://app.tranxact.co" class="btn-primary">Get the App <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a href="https://pay.tranxact.co" class="btn-teal">Accept Payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" class="btn-dark">Explore Tranxact Business <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
