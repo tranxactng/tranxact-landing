@@ -194,6 +194,7 @@
 
   /* Feature grid, compact */
   .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px;}
+  .feature-grid.cols-3{grid-template-columns:repeat(3,1fr);}
   .feature-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;padding:20px;}
   .feature-icon{width:32px;height:32px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
   .feature-icon svg{width:15px;height:15px;stroke:var(--accent);}
@@ -328,6 +329,7 @@
     .persona-grid{grid-template-columns:1fr 1fr;}
     .bills-grid{grid-template-columns:repeat(3,1fr);}
     .feature-grid{grid-template-columns:1fr;}
+    .feature-grid.cols-3{grid-template-columns:1fr;}
     .pf-grid{grid-template-columns:1fr 1fr;}
     .nav-links{display:none;}
   }
@@ -385,8 +387,8 @@
     </button>
     <div class="nav-menu-links">
       <a href="#crypto-convert" onclick="toggleNavMenu(false)">Product</a>
-      <a href="#pay-anywhere" onclick="toggleNavMenu(false)">Accept Payments</a>
-      <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" onclick="toggleNavMenu(false)">Business</a>
+      <a href="#bills" onclick="toggleNavMenu(false)">Bills</a>
+      <a href="#get-started" onclick="toggleNavMenu(false)">Get Started</a>
       <a href="https://app.tranxact.co" onclick="toggleNavMenu(false)">Tip Me</a>
       <a href="#infrastructure" onclick="toggleNavMenu(false)">Infrastructure</a>
       <a href="blog/index.html" onclick="toggleNavMenu(false)">Blog</a>
@@ -424,10 +426,6 @@
         <div class="hero-cta">
           <a href="https://app.tranxact.co" class="btn-primary">Get the App <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <span class="hero-cta-sub">Send, receive, and spend money</span>
-        </div>
-        <div class="hero-cta">
-          <a href="https://pay.tranxact.co" class="btn-teal">Accept Payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <span class="hero-cta-sub">Get paid for your business</span>
         </div>
       </div>
     </div>
@@ -530,13 +528,13 @@
     <div class="split-copy">
       <span class="eyebrow teal">TranxactPay</span>
       <h2 class="section-title">Get Paid Anywhere</h2>
-      <p class="section-sub">Whether it's customers, clients, or your audience, Tranxact gives you everything you need to accept payments.</p>
+      <p class="section-sub">Create a payment link right from the app. Share it anywhere, get paid in naira or crypto, and watch it land in your balance.</p>
       <ul class="split-list">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Accept one-time or recurring payments</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Collect tips with a single tap</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Track every link in one place</li>
       </ul>
-      <a href="https://pay.tranxact.co" class="btn-primary" style="margin-top:28px;">Accept Payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://app.tranxact.co" class="btn-primary" style="margin-top:28px;">Get the App <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="split-visual">
       <div class="pay-modal">
@@ -552,50 +550,6 @@
           <div class="desc">Design consultation, Invoice #0412</div>
         </div>
         <div class="pay-copy-btn">Copy link</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="storefront" class="reveal">
-  <div class="wrap split">
-    <div class="split-copy">
-      <span class="eyebrow teal">Business</span>
-      <h2 class="section-title">Your business, one link away</h2>
-      <p class="section-sub">Add it to your Instagram or WhatsApp bio and it becomes your whole shop. Customers browse, pick, and pay, all without you needing a website.</p>
-      <ul class="split-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>List your products, services, or events on one page</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Customers pay in naira or crypto: you don't manage either</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tranxact handles checkout and settlement, start to finish</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No website, no developer: set it up from your dashboard</li>
-      </ul>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;">
-        <a href="https://pay.tranxact.co" class="btn-primary">Set up your business <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" class="btn-secondary">Explore Business</a>
-      </div>
-    </div>
-    <div class="split-visual">
-      <div class="pay-modal">
-        <div class="store-head">
-          <div class="store-avatar">AS</div>
-          <div>
-            <div class="store-name">Aiden Studio</div>
-            <div class="store-url">business.tranxact.co/aiden-studio</div>
-          </div>
-        </div>
-        <div class="store-item">
-          <div><div class="store-item-type">SERVICE</div><div class="store-item-name">Logo Design</div></div>
-          <div class="store-item-price">₦45,000</div>
-        </div>
-        <div class="store-item">
-          <div><div class="store-item-type">PRODUCT</div><div class="store-item-name">Brand Guide PDF</div></div>
-          <div class="store-item-price">₦8,000</div>
-        </div>
-        <div class="store-item">
-          <div><div class="store-item-type">EVENT</div><div class="store-item-name">Design Workshop</div></div>
-          <div class="store-item-price">₦15,000</div>
-        </div>
-        <div class="store-pay-methods">Naira or crypto, settled by Tranxact</div>
       </div>
     </div>
   </div>
@@ -656,7 +610,6 @@
       <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1-1"/></svg></div><h3>Payment Links</h3><p>Create a link and get paid instantly.</p></div>
       <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z"/></svg></div><h3>QR Codes</h3><p>Let anyone scan and pay in seconds.</p></div>
       <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6z"/></svg></div><h3>Accept Tips</h3><p>One link, always open. Your audience taps and pays, in naira or crypto.</p></div>
-      <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9M3 9h18M9 20v-6h6v6"/></svg></div><h3>Business</h3><p>Sell products, services, or events on your own page. No website needed.</p></div>
       <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>Payment Infrastructure</h3><p>Every payment is tracked, logged, and settled automatically.</p></div>
     </div>
   </div>
@@ -677,11 +630,6 @@
       <div class="pay-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2v20M8 2v20M6 6h9a3 3 0 0 1 0 6H6m0 0h10a3 3 0 0 1 0 6H6"/></svg>TRX</div>
     </div>
     <p class="infra-note">We handle confirmation and conversion. You receive a clean, spendable balance.</p>
-    <div class="live-card">
-      <h3>Pay with Tranxact</h3>
-      <p>Let customers pay directly on your website or app using Tranxact. Grab a checkout button for any of your payment links, same rates and tracking as everything else.</p>
-      <a href="https://pay.tranxact.co">Get your embed code →</a>
-    </div>
   </div>
 </section>
 
@@ -730,6 +678,31 @@
   </div>
 </section>
 
+<section id="get-started" class="reveal">
+  <div class="wrap">
+    <span class="eyebrow">Get Started</span>
+    <h2 class="section-title">Get the most out of the app</h2>
+    <p class="section-sub" style="margin-bottom:36px;">Three minutes of setup, and Tranxact behaves like a real app on your phone, not a browser tab.</p>
+    <div class="feature-grid cols-3">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h3>Add to Home Screen</h3>
+        <p>On iPhone: open <strong style="color:var(--text);">app.tranxact.co</strong> in Safari, tap Share, then "Add to Home Screen." On Android: open it in Chrome, tap the menu, then "Add to Home screen." It now opens instantly, full screen, no browser bar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <h3>Enable Notifications</h3>
+        <p>Turn on notifications and you'll know the moment money moves, a deposit lands, a payment link gets paid, or a transfer arrives, without needing to open the app to check.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>App Store &amp; Google Play</h3>
+        <p>Native apps for iPhone and Android are on the way. Until then, the installed web app already gives you the same full-screen experience, right from your Home Screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="reveal">
   <div class="wrap">
     <span class="eyebrow">FAQ</span>
@@ -768,7 +741,7 @@
           Can my business accept payments through Tranxact?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="faq-a-wrap"><div class="faq-a">Yes. Payment links, QR codes, Tip Me links, and a full business page for listing products, services, or events, all managed from your dashboard at pay.tranxact.co.</div></div>
+        <div class="faq-a-wrap"><div class="faq-a">Yes. Create a payment link, a QR code, or your own Tip Me link, right from the app, and share it anywhere. Every payment lands directly in your Tranxact balance.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q-btn" onclick="toggleFaq(this)">
@@ -787,8 +760,6 @@
     <p>Accept payments. Spend instantly. Manage everything in one place.</p>
     <div class="final-btns">
       <a href="https://app.tranxact.co" class="btn-primary">Get the App <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="https://pay.tranxact.co" class="btn-teal">Accept Payments <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="https://business.tranxact.co" target="_blank" rel="noopener noreferrer" class="btn-dark">Explore Tranxact Business <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
