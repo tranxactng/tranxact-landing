@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tranxact</title>
 <meta name="description" content="Receive crypto, get naira instantly. Send, pay bills, and get paid from one Tranxact balance.">
@@ -13,6 +14,7 @@
 <style>
 
 :root {
+  color-scheme: light;
   --bg: #f3f1ea; --fg: #161513; --muted: #6d6a63; --subtle: #8c887f;
   --surface: #fffcf6; --surface-2: #e8e4d9; --border: #d9d4c8;
   --ink: #161513; --ink-fg: #f3f1ea; --teal: #148a68; --teal-soft: #d8f3ea; --teal-fg: #043226;
@@ -20,6 +22,19 @@
   --danger: #c2413b; --btc: #f7931a;
   --sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+/* One permanent look regardless of the visitor's device setting — every
+   variable pinned to the exact same cream/light value even when the OS is
+   in dark mode, so there's nothing left for a browser to auto-adapt. The
+   --phone-* variables are deliberately left out here: that's the app
+   mockup, which is supposed to stay dark on purpose. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #f3f1ea; --fg: #161513; --muted: #6d6a63; --subtle: #8c887f;
+    --surface: #fffcf6; --surface-2: #e8e4d9; --border: #d9d4c8;
+    --ink: #161513; --ink-fg: #f3f1ea; --teal: #148a68; --teal-soft: #d8f3ea; --teal-fg: #043226;
+    --danger: #c2413b; --btc: #f7931a;
+  }
 }
 * { box-sizing: border-box; }
 html { -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--fg); scroll-behavior: smooth; }
@@ -419,7 +434,7 @@ footer.site { border-top: 1px solid var(--border); }
     <div><p class="eyebrow">Journal</p><h2 class="h2">Getting paid, in practice.</h2></div>
     <a href="#/blog" style="font-size:14px;font-weight:500">All articles →</a>
   </div>
-  <div class="posts"><a class="card" href="#/blog/first-crypto-payment"><p class="mono subtle" style="margin:0;font-size:12px">12 Aug 2026, 8 min</p><h3 style="margin:1rem 0 0;font-size:1.1rem">Your first crypto payment as a Nigerian creator</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p></a><a class="card" href="#/blog/usdt-vs-usdc"><p class="mono subtle" style="margin:0;font-size:12px">4 Aug 2026, 6 min</p><h3 style="margin:1rem 0 0;font-size:1.1rem">USDT vs USDC: which stablecoin should you accept?</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p></a><a class="card" href="#/blog/pricing-in-crypto"><p class="mono subtle" style="margin:0;font-size:12px">28 Jul 2026, 9 min</p><h3 style="margin:1rem 0 0;font-size:1.1rem">How to price your work in crypto without getting burned</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p></a></div>
+  <div class="posts"><a class="card" href="#/blog/crypto-to-naira"><p class="mono subtle" style="margin:0;font-size:12px">Aug 2026</p><h3 style="margin:1rem 0 0;font-size:1.1rem">How Tranxact turns crypto into naira, automatically</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">Seven supported cryptocurrencies, one real deposit address each, converted to naira the moment it lands.</p></a><a class="card" href="#/blog/getting-paid"><p class="mono subtle" style="margin:0;font-size:12px">Aug 2026</p><h3 style="margin:1rem 0 0;font-size:1.1rem">Getting paid with Tranxact: payment links, QR codes, and tips</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">The different ways someone can actually pay you, and what happens on your end when they do.</p></a><a class="card" href="#/blog/referral-program"><p class="mono subtle" style="margin:0;font-size:12px">Aug 2026</p><h3 style="margin:1rem 0 0;font-size:1.1rem">How the Tranxact referral program actually works</h3><p class="muted" style="margin:.5rem 0 0;font-size:14px">What you earn, when you earn it, and how to actually get paid out.</p></a></div>
 </div></section>
 <section class="section border" id="faq"><div class="wrap faq">
   <p class="eyebrow">FAQ</p>
@@ -455,73 +470,130 @@ footer.site { border-top: 1px solid var(--border); }
 <main class="wrap" style="padding:8rem 0 6rem">
   <p class="eyebrow">Journal</p>
   <h1 class="h1" style="font-size:clamp(2.2rem,5vw,4rem)">Getting paid, in practice.</h1>
-  <p class="lead">Notes for Nigerian creators and freelancers who take crypto and need naira they can actually spend.</p>
-  <a class="featured" href="#/blog/first-crypto-payment">
-    <p class="mono subtle" style="margin:0;font-size:12px">12 Aug 2026, 8 min</p>
-    <h2 class="h2" style="margin-top:1rem;max-width:22ch">Your first crypto payment as a Nigerian creator</h2>
-    <p class="muted" style="margin:1rem 0 0;max-width:42rem;font-size:16px">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p>
+  <p class="lead">Notes on how Tranxact actually works, for people who want the real mechanics.</p>
+  <a class="featured" href="#/blog/crypto-to-naira">
+    <p class="mono subtle" style="margin:0;font-size:12px">August 2026 &middot; Crypto</p>
+    <h2 class="h2" style="margin-top:1rem;max-width:22ch">How Tranxact turns crypto into naira, automatically</h2>
+    <p class="muted" style="margin:1rem 0 0;max-width:42rem;font-size:16px">Seven supported cryptocurrencies, one real deposit address each, converted to naira the moment it lands — no separate crypto balance to manage.</p>
     <span style="display:inline-block;margin-top:1.5rem;font-size:14px;font-weight:500">Read article →</span>
   </a>
-  <div class="post-list"><a href="#/blog/usdt-vs-usdc"><div><h2 style="margin:0;font-size:1.25rem">USDT vs USDC: which stablecoin should you accept?</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p></div><p class="mono subtle" style="font-size:12px;flex:none">4 Aug 2026<br>6 min</p></a><a href="#/blog/pricing-in-crypto"><div><h2 style="margin:0;font-size:1.25rem">How to price your work in crypto without getting burned</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p></div><p class="mono subtle" style="font-size:12px;flex:none">28 Jul 2026<br>9 min</p></a><a href="#/blog/after-bitcoin-payment"><div><h2 style="margin:0;font-size:1.25rem">What happens after a client pays you in Bitcoin</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">From the moment the transaction hits the chain to the moment naira is sitting in a wallet you can spend. A walkthrough, not a whitepaper.</p></div><p class="mono subtle" style="font-size:12px;flex:none">18 Jul 2026<br>7 min</p></a></div>
+  <div class="post-list">
+    <a href="#/blog/getting-paid"><div><h2 style="margin:0;font-size:1.25rem">Getting paid with Tranxact: payment links, QR codes, and tips</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">The different ways someone can actually pay you, and what happens on your end when they do.</p></div><p class="mono subtle" style="font-size:12px;flex:none">Aug 2026</p></a>
+    <a href="#/blog/referral-program"><div><h2 style="margin:0;font-size:1.25rem">How the Tranxact referral program actually works</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">What you earn, when you earn it, and how to actually get paid out.</p></div><p class="mono subtle" style="font-size:12px;flex:none">Aug 2026</p></a>
+    <a href="#/blog/tip-me"><div><h2 style="margin:0;font-size:1.25rem">Let people show love, one tap at a time</h2><p class="muted" style="margin:.5rem 0 0;max-width:36rem;font-size:14px">A simple way for your audience to send you something, without needing an account of their own.</p></div><p class="mono subtle" style="font-size:12px;flex:none">Aug 2026</p></a>
+  </div>
 </main>
 
-</div><div data-page="blog-first-crypto-payment" hidden>
+</div>
 
+<div data-page="blog-crypto-to-naira" hidden>
+<main class="wrap" style="padding:8rem 0 6rem">
 <article class="article">
-  <p class="crumbs"><a href="#/">Home</a> / <a href="#/">Journal</a></p>
-  <p class="mono subtle" style="margin:1.5rem 0 0;font-size:12px">12 Aug 2026, 8 min</p>
-  <h1 class="h1" style="margin-top:.75rem;font-size:clamp(2rem,5vw,3.2rem);max-width:none">Your first crypto payment as a Nigerian creator</h1>
-  <p class="lead">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p>
-  <div style="margin-top:2.5rem"><p class="muted" style="font-size:16px;line-height:1.7">You finish a job. The client is in London, or Dubai, or somewhere your bank does not like. They ask: can I pay in USDT? You say yes because saying no means waiting another two weeks for a wire that might bounce. Then you sit there wondering what you just agreed to.</p><p class="muted" style="font-size:16px;line-height:1.7">This is the first-payment guide we wish someone had handed us. No theory. Just what to send, what to check, and how the money becomes naira you can spend.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">What you actually need</h2><p class="muted" style="font-size:16px;line-height:1.7">You need an address on the right network, a way to convert the crypto without hunting a P2P buyer, and a naira balance you can send to a bank or pay a bill from. That is the whole stack. Everything else is decoration.</p><ul class="muted" style="padding-left:1.25rem;font-size:16px;line-height:1.7"><li>A receive address generated for the asset they are sending: USDT, USDC, BTC, ETH, SOL, BNB, or TRX.</li><li>The network written next to that address. USDT on Tron is not USDT on Ethereum.</li><li>A conversion that credits naira to your main wallet automatically, not a second crypto balance you then have to cash out.</li></ul><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">What to send the client</h2><p class="muted" style="font-size:16px;line-height:1.7">Do not send a screenshot of a random exchange deposit screen. Send one thing: a TranxactPay invoice, or a receive address with the network named in the same message. Example: “Please send 120 USDT on TRC-20 to this address. Any other network and the funds may be lost.”</p><p class="muted" style="font-size:16px;line-height:1.7">If they are paying for a specific job, use an invoice link with the amount locked. If they tip you often, a Tip Me link that stays open is cleaner. Either way they pay from their wallet. You do not give them your bank details.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">The part that used to hurt</h2><p class="muted" style="font-size:16px;line-height:1.7">On a typical P2P app the crypto lands, then you list naira for sale, then a stranger chats you, then you argue about rate, then you wait for them to release. That is four extra steps after you already did the work.</p><p class="muted" style="font-size:16px;line-height:1.7">On Tranxact the inbound payment converts as it arrives. The naira hits your main balance. From there you send to any Nigerian bank, pay airtime or electricity, or transfer to another Tranxact user for free. No buyer. No chat.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">The one mistake that cannot be undone</h2><p class="muted" style="font-size:16px;line-height:1.7">Wrong network. If they send USDT on ERC-20 to a TRC-20 address, those funds are usually gone. Confirm the network on your receive screen, write it in the message, and do not accept “I already sent it” as a substitute for checking. Blockchain payments do not reverse.</p><p class="muted" style="font-size:16px;line-height:1.7">Do that once, correctly, and the second payment is boring. That is the point.</p></div>
+  <p class="crumbs"><a href="#/blog">Journal</a> / Crypto</p>
+  <h1 class="h1" style="font-size:2.5rem;max-width:none">How Tranxact turns crypto into naira, automatically</h1>
+  <p class="subtle" style="font-size:14px">August 2026</p>
+  <div class="muted" style="margin-top:2.5rem;font-size:16px;line-height:1.7;display:grid;gap:1.5rem">
+<p>Tranxact supports receiving seven cryptocurrencies: BTC, ETH, BNB, USDT, USDC, TRX, and SOL. Here's what actually happens when someone sends you one of them.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">You get a real address, not a shared one</h2>
+  <p>Every user gets their own unique deposit address per coin, the same as any wallet you'd use elsewhere. When crypto arrives at that address, it's detected and matched to your account.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Automatic conversion</h2>
+  <p>Rather than sitting in your account as a separate crypto balance you'd need to manage or withdraw separately, it's converted to naira at the time it's received and credited straight to your main wallet balance. The naira value is based on the real market rate at the moment of conversion.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">One balance, not several</h2>
+  <p>This is the part that actually matters day to day: you don't end up juggling a naira balance and a crypto balance separately. Whatever comes in, a bank transfer, a payment link, or crypto from anywhere in the world, it's all just money in your one Tranxact balance, ready to spend or send.</p>
+  </div>
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+  </div>
 </article>
-<aside class="article" style="padding-top:0">
-  <p class="eyebrow">More from the journal</p>
-  <div style="border-top:1px solid var(--border)"><a href="#/blog/usdt-vs-usdc" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">USDT vs USDC: which stablecoin should you accept?</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p></a><a href="#/blog/pricing-in-crypto" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">How to price your work in crypto without getting burned</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p></a><a href="#/blog/after-bitcoin-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">What happens after a client pays you in Bitcoin</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">From the moment the transaction hits the chain to the moment naira is sitting in a wallet you can spend. A walkthrough, not a whitepaper.</p></a></div>
-</aside>
+</main>
+</div>
 
-</div><div data-page="blog-usdt-vs-usdc" hidden>
-
+<div data-page="blog-getting-paid" hidden>
+<main class="wrap" style="padding:8rem 0 6rem">
 <article class="article">
-  <p class="crumbs"><a href="#/">Home</a> / <a href="#/">Journal</a></p>
-  <p class="mono subtle" style="margin:1.5rem 0 0;font-size:12px">4 Aug 2026, 6 min</p>
-  <h1 class="h1" style="margin-top:.75rem;font-size:clamp(2rem,5vw,3.2rem);max-width:none">USDT vs USDC: which stablecoin should you accept?</h1>
-  <p class="lead">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p>
-  <div style="margin-top:2.5rem"><p class="muted" style="font-size:16px;line-height:1.7">Clients will offer whichever stablecoin their wallet already holds. Your job is not to win an internet argument about Tether. It is to get paid without losing money to the wrong network or a surprise conversion.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">The short version</h2><ul class="muted" style="padding-left:1.25rem;font-size:16px;line-height:1.7"><li>USDT is what most African and Asian clients already have. Tron (TRC-20) is the cheap, common rail.</li><li>USDC is what a lot of US and European clients hold, usually on Ethereum or Solana.</li><li>For a Nigerian creator, accept both. Do not make the client buy a coin they do not have.</li></ul><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Where the money actually moves</h2><p class="muted" style="font-size:16px;line-height:1.7">USDT on Tron is popular because fees are low and almost every P2P desk in Lagos already speaks it. USDC on Solana is fast and cheap. USDC or USDT on Ethereum works, but the gas can eat a small invoice. If a client insists on ERC-20 for a ₦40k job, the fee may be a real percentage of the payment.</p><p class="muted" style="font-size:16px;line-height:1.7">Tranxact accepts USDT and USDC (alongside BTC, ETH, SOL, BNB, and TRX) and converts inbound payments to naira automatically. You do not keep a dollar balance you then have to sell.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">What to put on the invoice</h2><p class="muted" style="font-size:16px;line-height:1.7">Name the asset and the network. “120 USDT, TRC-20” is a complete instruction. “USDT” by itself is not. If you use a TranxactPay link, the receive screen already shows the network next to the address. Send them the link and the guesswork goes away.</p><p class="muted" style="font-size:16px;line-height:1.7">If a regular client always pays the same coin, save that as their default. Switching networks mid-relationship is how wrong-chain transfers happen.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">A note on “which is safer”</h2><p class="muted" style="font-size:16px;line-height:1.7">USDC is issued by Circle, a regulated US company. USDT is issued by Tether and is larger by circulation. For the size of invoice most freelancers take, issuer risk is not the thing that loses you money. Wrong network is. Ask for the coin the client already holds, on a network you have an address for, and convert to naira the moment it lands.</p></div>
+  <p class="crumbs"><a href="#/blog">Journal</a> / Accepting Payments</p>
+  <h1 class="h1" style="font-size:2.5rem;max-width:none">Getting paid with Tranxact: payment links, QR codes, and tips</h1>
+  <p class="subtle" style="font-size:14px">August 2026</p>
+  <div class="muted" style="margin-top:2.5rem;font-size:16px;line-height:1.7;display:grid;gap:1.5rem">
+<p>If you sell anything: a service, a product, your time, or you just want people to be able to support you, Tranxact gives you a few real ways to collect money. Here's exactly how each one works.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Payment links</h2>
+  <p>A payment link is the simplest way to get paid. You create one from your dashboard at <a href="https://pay.tranxact.co">pay.tranxact.co</a>, give it a title, and set either a fixed amount or leave it flexible so the person paying can enter their own amount.</p>
+  <p>Once it's created, you get a real, shareable link. Drop it in a WhatsApp chat, an invoice, an email, anywhere. Whoever opens it sees a clean checkout page and can pay by bank transfer or supported cryptocurrency, no account required on their end.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">QR codes</h2>
+  <p>Every payment link automatically comes with a QR code too. This is the fastest option for in-person payments. A customer scans it with their phone camera and lands straight on the same checkout page. No typing, no app to install.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">How settlement actually works</h2>
+  <p>However someone pays, bank transfer or crypto, the money lands in the same place: your Tranxact wallet balance. If it comes in as crypto, it's converted to naira automatically at the time of payment, so you're not left holding a separate crypto balance to manage.</p>
+  </div>
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+  </div>
 </article>
-<aside class="article" style="padding-top:0">
-  <p class="eyebrow">More from the journal</p>
-  <div style="border-top:1px solid var(--border)"><a href="#/blog/first-crypto-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">Your first crypto payment as a Nigerian creator</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p></a><a href="#/blog/pricing-in-crypto" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">How to price your work in crypto without getting burned</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p></a><a href="#/blog/after-bitcoin-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">What happens after a client pays you in Bitcoin</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">From the moment the transaction hits the chain to the moment naira is sitting in a wallet you can spend. A walkthrough, not a whitepaper.</p></a></div>
-</aside>
+</main>
+</div>
 
-</div><div data-page="blog-pricing-in-crypto" hidden>
-
+<div data-page="blog-referral-program" hidden>
+<main class="wrap" style="padding:8rem 0 6rem">
 <article class="article">
-  <p class="crumbs"><a href="#/">Home</a> / <a href="#/">Journal</a></p>
-  <p class="mono subtle" style="margin:1.5rem 0 0;font-size:12px">28 Jul 2026, 9 min</p>
-  <h1 class="h1" style="margin-top:.75rem;font-size:clamp(2rem,5vw,3.2rem);max-width:none">How to price your work in crypto without getting burned</h1>
-  <p class="lead">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p>
-  <div style="margin-top:2.5rem"><p class="muted" style="font-size:16px;line-height:1.7">You quoted $200 when BTC was one number. They paid three days later when it was another. You did the same work and took home less. That is not “the market.” That is a pricing bug.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Quote in naira. Accept crypto.</h2><p class="muted" style="font-size:16px;line-height:1.7">Your cost of living is naira. Food, data, rent, the generator. Price the job in ₦, then let the payment convert at the rate on the day it arrives. Do not lock a BTC amount on Monday for a transfer that happens Friday.</p><p class="muted" style="font-size:16px;line-height:1.7">Stablecoins (USDT, USDC) remove most of that swing. If a client can pay in either, prefer that for anything that is not a large, immediate transfer. Bitcoin is fine when you are converting on arrival, not when the invoice sits unpaid for a week.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Put a validity window on the quote</h2><p class="muted" style="font-size:16px;line-height:1.7">A simple line on the invoice: “Amount locked for 48 hours. After that the naira total is recalculated.” That is normal in any business that deals with FX. You are not being difficult. You are not absorbing their delay for free.</p><ul class="muted" style="padding-left:1.25rem;font-size:16px;line-height:1.7"><li>Small jobs (under ₦100k): stablecoin, pay within 48 hours.</li><li>Retainers: monthly invoice in naira, paid in USDT/USDC.</li><li>Large one-offs: 50% to start, 50% on delivery, both converting on receipt.</li></ul><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Do not “hold for a better rate”</h2><p class="muted" style="font-size:16px;line-height:1.7">If the client paid you to do a job, that money is operating capital, not a trade. Convert on arrival. If you want to speculate, do it with money you can afford to watch. Mixing the two is how freelancers end up unable to pay rent after a green candle they did not sell.</p><p class="muted" style="font-size:16px;line-height:1.7">Tranxact converts inbound crypto to naira automatically so the default is the professional one: get paid, see naira, spend. You can still send, pay bills, or withdraw to a bank from the same balance.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Fees belong on the quote</h2><p class="muted" style="font-size:16px;line-height:1.7">Network fees and conversion fees are real. If you swallow them silently, you discounted the job. Either gross up the invoice so the naira you need is what lands, or show the fee before the client confirms, which is how TranxactPay presents it. Hidden fees are how trust dies. Surprise shortfalls are how you work cheaper than you meant to.</p></div>
+  <p class="crumbs"><a href="#/blog">Journal</a> / Referrals</p>
+  <h1 class="h1" style="font-size:2.5rem;max-width:none">How the Tranxact referral program actually works</h1>
+  <p class="subtle" style="font-size:14px">August 2026</p>
+  <div class="muted" style="margin-top:2.5rem;font-size:16px;line-height:1.7;display:grid;gap:1.5rem">
+<p>Tranxact's referral program has two sides to it, and they're genuinely different from each other, not just a single flat reward split two ways. Here's exactly how each side works.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Getting your referral link</h2>
+  <p>Every account has its own referral code, found in your profile under Referrals. Share it however makes sense, a link, or just your username for someone to enter when they sign up.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">What you earn as a referrer</h2>
+  <p>You earn 25% of the crypto funding fee every time someone you referred receives crypto, for as long as they keep using Tranxact. This isn't a one-time thing. Every qualifying crypto deposit they make earns you a share, not just their first.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">What the person you referred gets</h2>
+  <p>This is the part that's easy to miss: the bonus on signup isn't for you, it's for them. Anyone you refer gets ₦1,000 credited the moment their first crypto deposit clears at $25 or more. It's a genuine welcome bonus for the new person, on top of whatever you're earning as the referrer.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">How earnings actually reach you</h2>
+  <p>Referral earnings build up separately from your main wallet balance, they don't land there automatically. You'll see your running total in the Referrals section of your profile, and you withdraw it into your spendable balance whenever you're ready.</p>
+  </div>
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+  </div>
 </article>
-<aside class="article" style="padding-top:0">
-  <p class="eyebrow">More from the journal</p>
-  <div style="border-top:1px solid var(--border)"><a href="#/blog/first-crypto-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">Your first crypto payment as a Nigerian creator</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p></a><a href="#/blog/usdt-vs-usdc" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">USDT vs USDC: which stablecoin should you accept?</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p></a><a href="#/blog/after-bitcoin-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">What happens after a client pays you in Bitcoin</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">From the moment the transaction hits the chain to the moment naira is sitting in a wallet you can spend. A walkthrough, not a whitepaper.</p></a></div>
-</aside>
+</main>
+</div>
 
-</div><div data-page="blog-after-bitcoin-payment" hidden>
-
+<div data-page="blog-tip-me" hidden>
+<main class="wrap" style="padding:8rem 0 6rem">
 <article class="article">
-  <p class="crumbs"><a href="#/">Home</a> / <a href="#/">Journal</a></p>
-  <p class="mono subtle" style="margin:1.5rem 0 0;font-size:12px">18 Jul 2026, 7 min</p>
-  <h1 class="h1" style="margin-top:.75rem;font-size:clamp(2rem,5vw,3.2rem);max-width:none">What happens after a client pays you in Bitcoin</h1>
-  <p class="lead">From the moment the transaction hits the chain to the moment naira is sitting in a wallet you can spend. A walkthrough, not a whitepaper.</p>
-  <div style="margin-top:2.5rem"><p class="muted" style="font-size:16px;line-height:1.7">Someone just sent you bitcoin. Congratulations. Also: it is not naira yet, it is not in your bank, and if you treat a block explorer screenshot as “paid in full” you will get hurt.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">First, wait for confirmation</h2><p class="muted" style="font-size:16px;line-height:1.7">A Bitcoin payment is a transaction on a public chain. It is not done the second they hit send. For an invoice you care about, wait for confirmations before you deliver the files. Your wallet should show the payment as pending, then completed. Do not ship on “I have sent it” alone.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Then convert. Do not babysit a second balance.</h2><p class="muted" style="font-size:16px;line-height:1.7">The old path: BTC sits in an exchange or a P2P app. You list naira. A buyer chats you. You argue. Maybe it releases today. Maybe it does not.</p><p class="muted" style="font-size:16px;line-height:1.7">The Tranxact path: inbound BTC is converted automatically and credited to your main naira wallet. Same wallet you send from, pay bills from, and receive other payments into. No separate “crypto tab” you have to remember to cash out.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">Then spend it like naira, because it is</h2><ul class="muted" style="padding-left:1.25rem;font-size:16px;line-height:1.7"><li>Send to any Nigerian bank account.</li><li>Pay airtime, data, electricity, TV, or betting from the app.</li><li>Transfer to another Tranxact user at ₦0.</li></ul><p class="muted" style="font-size:16px;line-height:1.7">That is the product. Crypto in, naira you can actually use. The ledger books the deposit, the conversion, and the spend the same way a bank would, so the balance you see is the balance that is there.</p><h2 style="margin:2rem 0 0;font-size:1.25rem;font-weight:600">If the amount looks short</h2><p class="muted" style="font-size:16px;line-height:1.7">Check three things: the network fee the sender paid (that comes out of their side, not yours), the conversion fee shown before credit, and whether they sent the full invoice amount. If they underpaid, do not deliver the rest of the work until the remainder lands. A partial Bitcoin payment is not a rounding error. It is an unpaid invoice.</p><p class="muted" style="font-size:16px;line-height:1.7">Once it is credited, treat it as naira. Send it, spend it, or leave it in the wallet. The bitcoin part of the story should already be over.</p></div>
-</article>
-<aside class="article" style="padding-top:0">
-  <p class="eyebrow">More from the journal</p>
-  <div style="border-top:1px solid var(--border)"><a href="#/blog/first-crypto-payment" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">Your first crypto payment as a Nigerian creator</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">A client wants to pay in USDT. Here is exactly what happens, what to send them, and how the naira ends up in a wallet you can actually spend.</p></a><a href="#/blog/usdt-vs-usdc" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">USDT vs USDC: which stablecoin should you accept?</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Both are dollars on-chain. The network, the issuer, and who is paying you decide which one you should actually ask for.</p></a><a href="#/blog/pricing-in-crypto" style="display:block;padding:1.25rem 0;border-bottom:1px solid var(--border)"><p style="margin:0;font-weight:600">How to price your work in crypto without getting burned</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">Quote in naira, settle in crypto, and stop letting a six-hour BTC swing eat your fee.</p></a></div>
-</aside>
+  <p class="crumbs"><a href="#/blog">Journal</a> / Tip Me</p>
+  <h1 class="h1" style="font-size:2.5rem;max-width:none">Let people show love, one tap at a time</h1>
+  <p class="subtle" style="font-size:14px">August 2026</p>
+  <div class="muted" style="margin-top:2.5rem;font-size:16px;line-height:1.7;display:grid;gap:1.5rem">
+<p>Creators, freelancers, streamers, anyone with an audience gets a personal tip link on Tranxact. Share it once, and it's always open, no new request needed every time someone wants to send something your way.</p>
 
-</div><div data-page="pay-aiden-studio" hidden>
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">One link, always open</h2>
+  <p>Unlike a payment link tied to a specific invoice or order, a Tip Me link doesn't expire and doesn't need a fixed amount. Put it in your bio, your stream description, wherever your audience actually finds you, and it just sits there ready.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">How supporters actually pay</h2>
+  <p>Whoever taps your link can pay in naira or supported cryptocurrency, no card details, no account needed on their side. They enter whatever amount they want to send, confirm, and it's done.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Where the money goes</h2>
+  <p>Tips land in your Tranxact wallet balance the same way any other payment does. If someone tips you in crypto, it's converted to naira automatically, so there's nothing separate to manage or withdraw differently.</p>
+
+  <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Setting it up</h2>
+  <p>Create your Tip Me link from your dashboard at <a href="https://pay.tranxact.co">pay.tranxact.co</a>, same place as your other payment links. Give it a short description so people know what they're supporting, and share it.</p>
+  </div>
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+  </div>
+</article>
+</main>
+</div>
+
+<div data-page="pay-aiden-studio" hidden>
 
 <main class="pay-box" data-pay data-amount="45000">
   <a class="muted" href="#/" style="display:inline-flex;align-items:center;gap:6px;font-size:14px"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></span> Back to Tranxact</a>
@@ -697,7 +769,12 @@ footer.site { border-top: 1px solid var(--border); }
     el.addEventListener("click", () => showPhone(el.dataset.phone));
   });
 
-  const KEY = "tranxact-waitlist";
+  // Was only ever saving to localStorage — never reached a real backend,
+  // meaning every "You're on the list" message was shown regardless of
+  // whether anything durable actually happened. This now calls the real
+  // join-waitlist function and only shows success after a real, confirmed
+  // response — with a genuine error path if something actually fails.
+  const WAITLIST_ENDPOINT = "https://lbvjrhpnnsprqulbyacw.supabase.co/functions/v1/join-waitlist";
   document.addEventListener("submit", (e) => {
     const form = e.target.closest("form.wait");
     if (!form) return;
@@ -705,17 +782,31 @@ footer.site { border-top: 1px solid var(--border); }
     const email = form.email.value.trim().toLowerCase();
     const name = (form.person && form.person.value.trim()) || "";
     const role = form.querySelector(".role.on")?.dataset.role || "personal";
+    const err = form.querySelector(".form-err");
+    if (err) err.textContent = "";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      const err = form.querySelector(".form-err");
       if (err) err.textContent = "Enter a valid email so we can reach you.";
       return;
     }
-    let list = [];
-    try { list = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (err) {}
-    list = list.filter((x) => x.email !== email);
-    list.push({ email: email, name: name, role: role, at: new Date().toISOString() });
-    localStorage.setItem(KEY, JSON.stringify(list));
-    form.outerHTML = '<div class="ok"><p style="margin:0;font-weight:600;font-size:18px">You\'re on the list.</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">We\'ll email you the moment early access opens. Join Telegram in the meantime for build updates.</p><a class="btn sm" style="margin-top:1rem" href="https://t.me/tranxacters" target="_blank" rel="noreferrer">Open Telegram</a></div>';
+    const btn = form.querySelector("button[type=submit]");
+    const originalText = btn ? btn.textContent : "";
+    if (btn) { btn.disabled = true; btn.textContent = "Joining…"; }
+    fetch(WAITLIST_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, name, role }),
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok || data.error) {
+          throw new Error((data && data.error) || "Something went wrong. Please try again.");
+        }
+        form.outerHTML = '<div class="ok"><p style="margin:0;font-weight:600;font-size:18px">You\'re on the list.</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">We\'ll email you the moment early access opens. Join Telegram in the meantime for build updates.</p><a class="btn sm" style="margin-top:1rem" href="https://t.me/tranxacters" target="_blank" rel="noreferrer">Open Telegram</a></div>';
+      })
+      .catch((e2) => {
+        if (err) err.textContent = "Couldn't reach the server. Check your connection and try again.";
+        if (btn) { btn.disabled = false; btn.textContent = originalText; }
+      });
   });
   document.addEventListener("click", (e) => {
     const role = e.target.closest(".role");
