@@ -5,7 +5,7 @@
 <meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tranxact</title>
-<meta name="description" content="Receive crypto, get naira instantly. Send, pay bills, and get paid from one Tranxact balance.">
+<meta name="description" content="Receive crypto, get naira instantly. Send, pay bills, and get paid from one Tranxact balance, or get a payment link with no account.">
 <meta name="theme-color" content="#f3f1ea">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzE2MTUxMyIvPgogIDxnIGZpbGw9IiNGM0YxRUEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuNSA2Ljg1KSBzY2FsZSgwLjA0NDMyNikiPgogICAgPHJlY3QgeD0iMTU3IiB5PSIwIiB3aWR0aD0iMjMwIiBoZWlnaHQ9IjY1IiByeD0iMzIuNSIvPgogICAgPHJlY3QgeD0iMTQ3IiB5PSI4MyIgd2lkdGg9IjI1NCIgaGVpZ2h0PSI2NSIgcng9IjMyLjUiLz4KICAgIDxyZWN0IHg9IjAiIHk9IjE3NCIgd2lkdGg9IjU0OSIgaGVpZ2h0PSI2OCIgcng9IjM0Ii8+CiAgICA8cmVjdCB4PSIxNDUiIHk9IjI2MiIgd2lkdGg9IjI0MiIgaGVpZ2h0PSI2NiIgcng9IjMzIi8+CiAgICA8cmVjdCB4PSIxNzIiIHk9IjM0NyIgd2lkdGg9IjM5MiIgaGVpZ2h0PSI2NiIgcng9IjMzIi8+CiAgPC9nPgo8L3N2Zz4K">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,6 +211,59 @@ footer.site { border-top: 1px solid var(--border); }
 }
 
 [data-page][hidden] { display: none !important; }
+
+/* ===== Get a payment link (guest flow) ===== */
+.gp-wrap { display: grid; gap: 2.5rem; padding: 8rem 0 6rem; }
+@media (min-width: 900px) { .gp-wrap { grid-template-columns: 1fr 1.05fr; gap: 4.5rem; align-items: start; } .gp-copy { position: sticky; top: 7rem; } }
+.gp-copy .h1 { font-size: clamp(2.4rem, 5.2vw, 4rem); max-width: 11ch; }
+.gp-points { display: grid; gap: 1.1rem; margin-top: 2.25rem; max-width: 30rem; }
+.gp-point { display: flex; gap: .9rem; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+.gp-point b { display: block; font-weight: 600; letter-spacing: -.01em; }
+.gp-tick { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--ink-fg); display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+.gp-tick svg { width: 13px; height: 13px; }
+.gp-card { border: 1px solid var(--border); background: var(--surface); border-radius: 28px; padding: 1.5rem; box-shadow: 0 30px 60px rgba(40,30,20,.07); }
+@media (min-width: 640px) { .gp-card { padding: 2rem; } }
+.gp-prog { display: flex; gap: 6px; margin: 1rem 0 1.5rem; }
+.gp-prog i { flex: 1; height: 3px; border-radius: 2px; background: var(--surface-2); transition: background .3s; }
+.gp-prog i.on { background: var(--ink); }
+.gp-h { margin: 0; font-size: 1.65rem; font-weight: 600; letter-spacing: -.035em; line-height: 1.1; }
+.gp-sub { margin: .6rem 0 0; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+.gp-field { margin-top: 1.1rem; }
+.gp-field label { display: block; margin-bottom: 6px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--subtle); }
+.gp-field input, .gp-field select { width: 100%; height: 50px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); padding: 0 14px; font: inherit; font-size: 16px; color: var(--fg); }
+.gp-field input:focus, .gp-field select:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.gp-field input::placeholder { color: var(--subtle); }
+.gp-code { font-family: var(--mono) !important; font-size: 26px !important; letter-spacing: .55em; text-align: center; padding-left: .55em !important; }
+.gp-seg { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: 1.1rem; }
+.gp-seg button { height: 42px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.gp-seg button.on { background: var(--ink); color: var(--ink-fg); border-color: var(--fg); }
+.gp-err { min-height: 1.2em; margin: .85rem 0 0; color: var(--danger); font-size: 13.5px; line-height: 1.4; }
+.gp-note { margin: .9rem 0 0; color: var(--subtle); font-size: 12.5px; line-height: 1.55; }
+.gp-name { display: flex; align-items: center; gap: .7rem; margin-top: .9rem; padding: .8rem .95rem; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); font-size: 15px; }
+.gp-name small { display: block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 2px; }
+.gp-actions { display: flex; gap: .6rem; margin-top: 1.4rem; align-items: center; }
+.gp-actions .btn { flex: 1; }
+.gp-card button { font-family: inherit; cursor: pointer; }
+.gp-card button.btn:disabled { opacity: .45; cursor: not-allowed; }
+.gp-text { background: none; border: 0; padding: 0; color: var(--muted); font: inherit; font-size: 13.5px; text-decoration: underline; text-underline-offset: 3px; }
+.gp-text:disabled { text-decoration: none; opacity: .7; cursor: default; }
+.gp-big { display: flex; justify-content: center; margin: .5rem 0 1.1rem; }
+.gp-big .gp-tick { width: 56px; height: 56px; } .gp-big .gp-tick svg { width: 28px; height: 28px; }
+.gp-link { margin-top: 1.25rem; border: 1px solid var(--border); background: var(--bg); border-radius: 18px; padding: 1rem 1.1rem; }
+.gp-link .t { font-size: 15px; font-weight: 500; }
+.gp-link .u { margin-top: .4rem; font-family: var(--mono); font-size: 12.5px; color: var(--muted); word-break: break-all; }
+.gp-badge { display: inline-block; margin-top: .75rem; border: 1px solid var(--border); background: var(--surface-2); border-radius: 999px; padding: 3px 10px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.gp-center { text-align: center; }
+.gp-pre { margin-bottom: .25rem; }
+.gp-card [hidden] { display: none !important; }
+.gp-card { scroll-margin-top: 90px; }
+/* On phones the form comes straight after the headline; the reasons sit below it. */
+@media (max-width: 899px) {
+  .gp-wrap { gap: 0; }
+  .gp-copy { display: contents; }
+  .gp-copy .gp-points { order: 2; margin-top: 2.25rem; }
+  .gp-card { margin-top: 2rem; }
+}
 </style>
 </head>
 <body>
@@ -222,7 +275,7 @@ footer.site { border-top: 1px solid var(--border); }
       <span>tranxact</span>
     </a>
     <div class="nav-links"><a href="#/product">Product</a><a href="#/features">Features</a><a href="#/how-it-works">How it works</a><a href="#/faq">FAQ</a><a href="#/blog">Blog</a></div>
-    <div class="nav-cta"><a class="btn sm" href="#/waitlist">Join waitlist</a></div>
+    <div class="nav-cta"><a class="btn sm" href="https://app.tranxact.co">Get the App</a></div>
     <button class="icon-btn menu-toggle" type="button" data-open-menu aria-label="Open menu"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></span></button>
   </nav>
 </header>
@@ -233,7 +286,7 @@ footer.site { border-top: 1px solid var(--border); }
     <button class="icon-btn" type="button" data-close-menu aria-label="Close menu"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span></button>
   </div>
   <a href="#/product">Product</a><a href="#/features">Features</a><a href="#/how-it-works">How it works</a><a href="#/faq">FAQ</a><a href="#/blog">Blog</a>
-  <a class="btn wide" style="margin-top:1.5rem" href="#/waitlist" data-close-menu>Join waitlist</a>
+  <a class="btn wide" style="margin-top:1.5rem" href="https://app.tranxact.co" data-close-menu>Get the App</a>
   <p class="muted" style="margin-top:auto;font-size:14px">Tranxact Technologies Ltd<br>Registered in Nigeria</p>
 </aside>
 
@@ -244,12 +297,12 @@ footer.site { border-top: 1px solid var(--border); }
   <div class="paper-grain"></div>
   <div class="wrap hero-grid" style="position:relative">
     <div>
-      <p class="kicker"><span class="dot"></span> Early access in Nigeria</p>
+      <p class="kicker"><span class="dot"></span> Live in Nigeria</p>
       <h1 class="h1">Your money. One place.</h1>
       <p class="lead">Receive crypto from anywhere. Get naira instantly. Send to banks, pay bills, and get paid without waiting on a P2P buyer.</p>
       <div class="cta-row">
-        <a class="btn lg" href="#/waitlist">Join the waitlist <span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-        <a class="btn lg sec" href="#/pay/aiden-studio">Try a payment link</a>
+        <a class="btn lg" href="https://app.tranxact.co">Get the App <span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="btn lg sec" href="#/get-paid">Get a payment link</a>
       </div>
       <p class="subtle" style="margin-top:1rem;font-size:14px">CAC registered. 7 assets. ₦0 to send to Tranxact users</p>
     </div>
@@ -383,16 +436,16 @@ footer.site { border-top: 1px solid var(--border); }
   <div>
     <p class="eyebrow">TranxactPay</p>
     <h2 class="h2">Get paid anywhere you already are.</h2>
-    <p class="muted" style="margin:1.25rem 0 0;max-width:28rem;font-size:16px">Create a link from the app. Share it on WhatsApp, Instagram, or your site. Clients pay in naira or crypto. You see one clean balance.</p>
-    <ul class="checklist"><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>One-time invoices or always-on Tip Me links</li><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>QR codes for in-person and events</li><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Every payment tracked in one place</li></ul>
+    <p class="muted" style="margin:1.25rem 0 0;max-width:28rem;font-size:16px">Create a link in the app, or get one right here with just your email and a bank account. Share it on WhatsApp, Instagram, or your site, and get paid without chasing anyone.</p>
+    <ul class="checklist"><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>No account needed to start</li><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>One-time invoices or always-on Tip Me links</li><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>QR codes for in-person and events</li><li><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Every payment tracked in one place</li></ul>
     <div class="cta-row">
-      <a class="btn phone" href="#/pay/aiden-studio">Open demo invoice</a>
-      <a class="btn ghost" style="border:1px solid var(--phone-line);color:var(--ink-fg)" href="#/pay/aiden-tips">Open tip link</a>
+      <a class="btn phone" href="#/get-paid">Get a payment link</a>
+      <a class="btn sec" href="https://app.tranxact.co" style="background:transparent;color:var(--ink-fg);border:1px solid rgba(255,255,255,.28)">Get the App</a>
     </div>
   </div>
   <div class="pay-card">
     <p class="subtle" style="margin:0;font-size:12px">Payment link</p>
-    <p class="mono" style="margin:.5rem 0 0;color:var(--teal);font-size:14px">tranxact.co/pay/aiden-studio</p>
+    <p class="mono" style="margin:.5rem 0 0;color:var(--teal);font-size:14px">app.tranxact.co/pay/aiden-studio</p>
     <p class="mono" style="margin:1rem 0 0;font-size:1.9rem;font-weight:600">₦45,000.00</p>
     <p class="muted" style="margin:.25rem 0 0;font-size:14px">Design consultation, invoice #0412</p>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:1.5rem;text-align:center;font-size:11px;color:var(--phone-muted)">
@@ -402,18 +455,25 @@ footer.site { border-top: 1px solid var(--border); }
     </div>
   </div>
 </div></section>
+<section class="section border" id="no-account"><div class="wrap">
+  <p class="eyebrow">New · No account needed</p>
+  <h2 class="h2">No account? You can still get paid.</h2>
+  <p class="muted" style="margin:1.25rem 0 0;max-width:36rem;font-size:16px">Need to get paid today but don't want another app? Get a payment link with just your email and a Nigerian bank account. Open a free Tranxact account later with the same email, and your links and payments come with you.</p>
+  <div class="cards-3"><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">01</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Confirm your email</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">We send a 6-digit code. It proves the email is yours, and it's where we'll tell you every time you're paid.</p></article><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">02</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Add your bank account</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">We show the account name before you continue, so the people paying you know the money is going to the right person.</p></article><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">03</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Share it and get paid</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">Payers use the same secure TranxactPay checkout. We email you when the money lands and send it straight to your bank.</p></article></div>
+  <div class="cta-row" style="margin-top:2rem"><a class="btn lg" href="#/get-paid">Get a payment link</a><a class="btn lg sec" href="#/faq">How limits and fees work</a></div>
+</div></section>
 <section class="section"><div class="wrap">
   <p class="eyebrow">Why Tranxact</p>
   <h2 class="h2">Built to replace the P2P grind.</h2>
   <div class="table">
     <div class="t-row t-head"><span></span><span>Typical P2P</span><span>Tranxact</span></div>
-    <div class="t-row"><span>Wait for a P2P buyer</span><span class="muted">Yes</span><span class="us">Never</span></div><div class="t-row"><span>Chat / negotiate rate</span><span class="muted">Always</span><span class="us">No</span></div><div class="t-row"><span>Separate crypto wallet</span><span class="muted">Usually</span><span class="us">No. One naira balance</span></div><div class="t-row"><span>Spend on bills &amp; banks</span><span class="muted">After cashout</span><span class="us">Immediately</span></div><div class="t-row"><span>Payment links &amp; tips</span><span class="muted">No</span><span class="us">Built in</span></div>
+    <div class="t-row"><span>Wait for a P2P buyer</span><span class="muted">Yes</span><span class="us">Never</span></div><div class="t-row"><span>Chat / negotiate rate</span><span class="muted">Always</span><span class="us">No</span></div><div class="t-row"><span>Separate crypto wallet</span><span class="muted">Usually</span><span class="us">No. One naira balance</span></div><div class="t-row"><span>Spend on bills &amp; banks</span><span class="muted">After cashout</span><span class="us">Immediately</span></div><div class="t-row"><span>Payment links &amp; tips</span><span class="muted">No</span><span class="us">Built in</span></div><div class="t-row"><span>Get paid without an account</span><span class="muted">No</span><span class="us">Yes, with a payment link</span></div>
   </div>
 </div></section>
 <section class="section border" id="who"><div class="wrap">
   <p class="eyebrow">Who it's for</p>
   <h2 class="h2">Built for how people get paid now.</h2>
-  <div class="people"><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Freelancers</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">Invoice clients anywhere. Crypto or naira lands in one balance you can spend today.</p></article><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Creators</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">A Tip Me link that stays open. Audience pays without a card, you get naira instantly.</p></article><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Businesses</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">Payment links and QR for products, retainers, and walk-in customers.</p></article><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/><path d="M11.12 2.1A2 2 0 0 0 8.94 2.1L2.3 7.23a1 1 0 0 0 .4 1.77h18.6a1 1 0 0 0 .4-1.77z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Events &amp; vendors</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">Sell tickets or take payment in person. Settlement is your Tranxact balance.</p></article></div>
+  <div class="people"><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Freelancers</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">Invoice clients anywhere. Crypto or naira lands in one balance you can spend today.</p></article><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Creators</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">A Tip Me link that stays open. Audience pays without a card, you get naira instantly.</p></article><article class="card"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/><path d="M11.12 2.1A2 2 0 0 0 8.94 2.1L2.3 7.23a1 1 0 0 0 .4 1.77h18.6a1 1 0 0 0 .4-1.77z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></span><h3 style="margin:1rem 0 0;font-size:1.1rem">Events &amp; vendors</h3><p class="muted" style="margin:.5rem 0 0;font-size:15px">Sell tickets or take payment in person. Settlement is your Tranxact balance.</p></article></div>
 </div></section>
 <section class="section" id="features"><div class="wrap">
   <p class="eyebrow">Features</p>
@@ -439,30 +499,20 @@ footer.site { border-top: 1px solid var(--border); }
 <section class="section border" id="faq"><div class="wrap faq">
   <p class="eyebrow">FAQ</p>
   <h2 class="h2">Questions people actually ask</h2>
-  <div class="faq-list"><details><summary>Is Tranxact a registered company?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Tranxact Technologies Ltd is registered with the Corporate Affairs Commission (CAC) in Nigeria.</p></details><details><summary>Which cryptocurrencies can I receive?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Seven, currently: BTC, ETH, BNB, USDT, USDC, TRX, and SOL. Whatever comes in is converted to naira automatically and credited to your main balance. No separate crypto wallet to manage.</p></details><details><summary>What happens if I send crypto on the wrong network?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Blockchain transactions can&#x27;t be reversed once sent. If crypto is sent on a different network than the address was generated for, those funds may be permanently unrecoverable. Always double-check the network shown before sending. This is the most important thing to get right.</p></details><details><summary>Are there fees?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Sending money to other Tranxact users is free. Small fees apply to crypto conversion, TranxactPay transactions, and bank withdrawals. The exact amount is always shown before you confirm.</p></details><details><summary>Can my business accept payments?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Create a payment link, a QR code, or a Tip Me link from the app and share it anywhere. Every payment lands directly in your Tranxact balance.</p></details><details><summary>How do I get help?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">WhatsApp +234 705 886 6702, hello@tranxact.co, or X @tranxactng. Real replies from real people.</p></details></div>
-</div></section>
-<section class="section" id="waitlist" style="padding-top:0"><div class="wrap">
+  <div class="faq-list"><details><summary>Is Tranxact a registered company?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Tranxact Technologies Ltd is registered with the Corporate Affairs Commission (CAC) in Nigeria.</p></details><details><summary>Which cryptocurrencies can I receive?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Seven, currently: BTC, ETH, BNB, USDT, USDC, TRX, and SOL. Whatever comes in is converted to naira automatically and credited to your main balance. No separate crypto wallet to manage.</p></details><details><summary>What happens if I send crypto on the wrong network?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Blockchain transactions can&#x27;t be reversed once sent. If crypto is sent on a different network than the address was generated for, those funds may be permanently unrecoverable. Always double-check the network shown before sending. This is the most important thing to get right.</p></details><details><summary>Are there fees?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Sending money to other Tranxact users is free. Small fees apply to crypto conversion, TranxactPay transactions, and bank withdrawals. The exact amount is always shown before you confirm. Payment links without an account cost ₦100 per payment, plus the usual payout fee of ₦25 to ₦150 when we send the money to your bank.</p></details><details><summary>Can my business accept payments?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Create a payment link, a QR code, or a Tip Me link from the app and share it anywhere. Every payment lands directly in your Tranxact balance.</p></details><details><summary>Can I get paid without a Tranxact account?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. <a href="#/get-paid" style="text-decoration:underline;text-underline-offset:3px">Get a payment link</a> with just your email and a Nigerian bank account. We confirm your email with a code and check the bank account name. People pay through the same secure TranxactPay checkout, and we email you and send the money to your bank. Payment links without an account have a receiving limit. Past it, we'll ask you to open a free account and verify your ID. When you open an account with the same email, your links and payment history move into it automatically.</p></details><details><summary>How do I get help?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">WhatsApp +234 705 886 6702, hello@tranxact.co, or X @tranxactng. Real replies from real people.</p></details></div>
+</div></section><section class="section border"><div class="wrap">
   <div class="cta-box">
     <div>
-      <div class="mark-tile"><img src="data:image/png;base64,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" alt=""></div>
-      <h2 class="h2" style="margin-top:1.5rem">Be first to use Tranxact.</h2>
-      <p class="muted" style="margin:1rem 0 0;max-width:28rem;font-size:16px">Accept payments. Spend instantly. Manage everything in one place. We'll tell you the moment early access is live.</p>
+      <h2 class="h2" style="margin-top:0">Ready when you are.</h2>
+      <p class="muted" style="margin:1rem 0 0;max-width:28rem;font-size:16px">Receive crypto, get naira instantly, and pay bills — all from one balance. Download Tranxact and get started in minutes.</p>
     </div>
-    <form class="wait">
-      <input name="person" type="text" placeholder="Your name" autocomplete="name">
-      <input name="email" type="email" required placeholder="you@email.com" autocomplete="email">
-      <div class="roles">
-        <button type="button" class="role on" data-role="personal">Personal</button>
-        <button type="button" class="role" data-role="freelancer">Freelancer</button>
-        <button type="button" class="role" data-role="creator">Creator</button>
-        <button type="button" class="role" data-role="business">Business</button>
-      </div>
-      <p class="form-err" style="color:var(--danger);font-size:14px;margin:0"></p>
-      <button class="btn lg" type="submit">Get early access <span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></button>
-      <p class="subtle" style="margin:0;font-size:12px">No spam. We'll only write when there's something to use.</p>
-    </form>
+    <div>
+      <a class="btn lg" href="https://app.tranxact.co" style="width:100%;justify-content:center">Get the App <span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <p class="subtle" style="margin-top:1rem;font-size:12px;text-align:center">CAC registered. \u20a60 to send to Tranxact users.</p>
+    </div>
   </div>
 </div></section>
+
 </main>
 
 </div><div data-page="blog" hidden>
@@ -505,7 +555,7 @@ footer.site { border-top: 1px solid var(--border); }
   <p>This is the part that actually matters day to day: you don't end up juggling a naira balance and a crypto balance separately. Whatever comes in, a bank transfer, a payment link, or crypto from anywhere in the world, it's all just money in your one Tranxact balance, ready to spend or send.</p>
   </div>
   <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
-    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+    <a class="btn lg" href="https://app.tranxact.co">Get the App</a>
   </div>
 </article>
 </main>
@@ -521,7 +571,7 @@ footer.site { border-top: 1px solid var(--border); }
 <p>If you sell anything: a service, a product, your time, or you just want people to be able to support you, Tranxact gives you a few real ways to collect money. Here's exactly how each one works.</p>
 
   <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Payment links</h2>
-  <p>A payment link is the simplest way to get paid. You create one from your dashboard at <a href="https://pay.tranxact.co">pay.tranxact.co</a>, give it a title, and set either a fixed amount or leave it flexible so the person paying can enter their own amount.</p>
+  <p>A payment link is the simplest way to get paid. You create one from your dashboard at <a href="https://app.tranxact.co">app.tranxact.co</a>, give it a title, and set either a fixed amount or leave it flexible so the person paying can enter their own amount.</p>
   <p>Once it's created, you get a real, shareable link. Drop it in a WhatsApp chat, an invoice, an email, anywhere. Whoever opens it sees a clean checkout page and can pay by bank transfer or supported cryptocurrency, no account required on their end.</p>
 
   <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">QR codes</h2>
@@ -531,7 +581,7 @@ footer.site { border-top: 1px solid var(--border); }
   <p>However someone pays, bank transfer or crypto, the money lands in the same place: your Tranxact wallet balance. If it comes in as crypto, it's converted to naira automatically at the time of payment, so you're not left holding a separate crypto balance to manage.</p>
   </div>
   <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
-    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+    <a class="btn lg" href="https://app.tranxact.co">Get the App</a>
   </div>
 </article>
 </main>
@@ -559,7 +609,7 @@ footer.site { border-top: 1px solid var(--border); }
   <p>Referral earnings build up separately from your main wallet balance, they don't land there automatically. You'll see your running total in the Referrals section of your profile, and you withdraw it into your spendable balance whenever you're ready.</p>
   </div>
   <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
-    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+    <a class="btn lg" href="https://app.tranxact.co">Get the App</a>
   </div>
 </article>
 </main>
@@ -584,10 +634,10 @@ footer.site { border-top: 1px solid var(--border); }
   <p>Tips land in your Tranxact wallet balance the same way any other payment does. If someone tips you in crypto, it's converted to naira automatically, so there's nothing separate to manage or withdraw differently.</p>
 
   <h2 style="font-size:1.3rem;font-weight:600;color:var(--fg);letter-spacing:-.02em;margin:.5rem 0 0">Setting it up</h2>
-  <p>Create your Tip Me link from your dashboard at <a href="https://pay.tranxact.co">pay.tranxact.co</a>, same place as your other payment links. Give it a short description so people know what they're supporting, and share it.</p>
+  <p>Create your Tip Me link from your dashboard at <a href="https://app.tranxact.co">app.tranxact.co</a>, same place as your other payment links. Give it a short description so people know what they're supporting, and share it.</p>
   </div>
   <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
-    <a class="btn lg" href="#/waitlist">Join the waitlist</a>
+    <a class="btn lg" href="https://app.tranxact.co">Get the App</a>
   </div>
 </article>
 </main>
@@ -695,13 +745,108 @@ footer.site { border-top: 1px solid var(--border); }
   </div>
 </main>
 
-</div><div data-page="privacy" hidden>
+</div><div data-page="get-paid" hidden>
+<main class="wrap gp-wrap">
+  <div class="gp-copy">
+    <p class="crumbs"><a href="#/">Home</a> / Get a payment link</p>
+    <p class="eyebrow" style="margin-top:2.5rem">TranxactPay</p>
+    <h1 class="h1">Get paid first. Join when you're ready.</h1>
+    <p class="lead">Create a payment link with just your email and a bank account. Share it anywhere, with no app and no account.</p>
+    <div class="gp-points">
+      <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>No account needed</b><span class="muted">Your email and a bank account are enough to start.</span></div></div>
+      <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Paid straight to your bank</b><span class="muted">Money goes to the account you choose, and we email you each time someone pays.</span></div></div>
+      <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Keep everything when you join</b><span class="muted">Open a free Tranxact account with the same email and your links and payment history move into it automatically.</span></div></div>
+    </div>
+  </div>
+
+  <div class="gp-card" id="gp">
+    <span class="kicker gp-pre">New · reserve your link now</span>
+    <div class="gp-prog" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+    <!-- 1 · email + code -->
+    <section data-gp-step="email">
+      <form data-gp-form="email" novalidate>
+        <div data-gp-part="ask">
+          <h2 class="gp-h">What's your email?</h2>
+          <p class="gp-sub">We'll send you a code to confirm it's yours. We also use it to send your link and let you know when you're paid.</p>
+          <div class="gp-field"><label for="gp-email">Email</label><input id="gp-email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="254"></div>
+          <p class="gp-err" role="alert" data-gp-err></p>
+          <div class="gp-actions"><button class="btn lg" type="submit" data-gp-submit>Send code</button></div>
+        </div>
+        <div data-gp-part="code" hidden>
+          <h2 class="gp-h">Check your email.</h2>
+          <p class="gp-sub">We sent a 6-digit code to <b data-gp-email-show style="color:var(--fg)"></b>. It confirms the email is yours.</p>
+          <div class="gp-field"><label for="gp-code">Code</label><input id="gp-code" class="gp-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"></div>
+          <p class="gp-err" role="alert" data-gp-err2></p>
+          <div class="gp-actions"><button class="btn lg" type="submit" data-gp-submit2>Verify email</button></div>
+          <p class="gp-note"><button class="gp-text" type="button" data-gp-resend>Resend code</button> &nbsp;·&nbsp; <button class="gp-text" type="button" data-gp-change>Use a different email</button></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- 2 · link details -->
+    <section data-gp-step="details" hidden>
+      <form data-gp-form="details" novalidate>
+        <h2 class="gp-h">Create your payment link.</h2>
+        <p class="gp-sub">This is what the person paying you will see.</p>
+        <div class="gp-seg" role="group" aria-label="Amount type"><button type="button" class="on" data-gp-type="fixed">Fixed amount</button><button type="button" data-gp-type="flexible">Flexible</button></div>
+        <div class="gp-field"><label for="gp-title">What is it for?</label><input id="gp-title" type="text" placeholder="e.g. Logo design" maxlength="60" autocomplete="off"></div>
+        <div class="gp-field" data-gp-amountwrap><label for="gp-amount">Amount (NGN)</label><input id="gp-amount" type="text" inputmode="numeric" placeholder="75,000" autocomplete="off"><p class="gp-note" style="margin-top:.5rem">Between ₦100 and ₦200,000.</p></div>
+        <div class="gp-field"><label for="gp-desc">Description (optional)</label><input id="gp-desc" type="text" placeholder="e.g. Brand identity, 2 revisions" maxlength="140" autocomplete="off"></div>
+        <p class="gp-err" role="alert" data-gp-err></p>
+        <div class="gp-actions"><button class="btn lg" type="submit">Continue</button></div>
+      </form>
+    </section>
+
+    <!-- 3 · bank -->
+    <section data-gp-step="bank" hidden>
+      <form data-gp-form="bank" novalidate>
+        <h2 class="gp-h">Where should we send the money?</h2>
+        <p class="gp-sub">Every payment goes straight to this account.</p>
+        <div class="gp-field"><label for="gp-bank">Bank</label><select id="gp-bank"><option value="">Loading banks…</option></select></div>
+        <div class="gp-field"><label for="gp-acct">Account number</label><input id="gp-acct" type="text" inputmode="numeric" maxlength="10" placeholder="10 digits" autocomplete="off"></div>
+        <div class="gp-name" data-gp-resolved hidden><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><small>Account name</small><span data-gp-acctname></span></div></div>
+        <p class="gp-note" data-gp-unverified hidden>We couldn't confirm the account name right now. We'll verify it before your link goes live.</p>
+        <p class="gp-err" role="alert" data-gp-err></p>
+        <p class="gp-note">Changing this account later needs an email code and a 24-hour wait.</p>
+        <div class="gp-actions"><button class="btn sec lg" type="button" data-gp-back="details" style="flex:0 0 auto">Back</button><button class="btn lg" type="submit" disabled data-gp-submit>Continue</button></div>
+      </form>
+    </section>
+
+    <!-- 4 · you -->
+    <section data-gp-step="you" hidden>
+      <form data-gp-form="you" novalidate>
+        <h2 class="gp-h">Confirm who you are.</h2>
+        <p class="gp-sub">This keeps payments safe for you and the people paying you.</p>
+        <div class="gp-field"><label for="gp-name">Full name</label><input id="gp-name" type="text" autocomplete="name" maxlength="80" placeholder="As it appears on your bank account"></div>
+        <div class="gp-field"><label for="gp-phone">Phone number</label><input id="gp-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0803 000 0000" maxlength="20"></div>
+        <p class="gp-note">Your name must match your bank account name. Before your first payout, we'll ask you to verify your ID.</p>
+        <p class="gp-err" role="alert" data-gp-err></p>
+        <div class="gp-actions"><button class="btn sec lg" type="button" data-gp-back="bank" style="flex:0 0 auto">Back</button><button class="btn lg" type="submit" data-gp-submit>Create my link</button></div>
+      </form>
+    </section>
+
+    <!-- done -->
+    <section data-gp-step="done" hidden>
+      <div class="gp-big"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      <h2 class="gp-h gp-center" data-gp-done-head>Your link is reserved.</h2>
+      <p class="gp-sub gp-center"><span data-gp-done-lead>We've reserved it and emailed the details to</span> <b data-gp-done-email style="color:var(--fg)"></b>.</p>
+      <div class="gp-link"><div class="t" data-gp-done-title></div><div class="u" data-gp-done-url></div><span class="gp-badge" data-gp-badge>Reserved · not live yet</span></div>
+      <div class="gp-actions" data-gp-live-actions hidden><button class="btn lg" type="button" data-gp-copy>Copy link</button><button class="btn sec lg" type="button" data-gp-share>Share</button></div>
+      <p class="gp-note gp-center" data-gp-done-note>We'll email you the moment it goes live, and again whenever someone pays you.</p>
+      <div class="gp-actions"><a class="btn sec lg" href="#/">Back home</a><button class="btn lg" type="button" data-gp-another>Create another link</button></div>
+    </section>
+  </div>
+</main>
+</div>
+
+<div data-page="privacy" hidden>
 
 <article class="article">
   <p class="crumbs"><a href="#/">Home</a> / Privacy</p>
   <h1 class="h1" style="font-size:2.5rem;max-width:none">Privacy</h1>
-  <p class="subtle" style="font-size:14px">Last updated 12 September 2026</p>
-  <div class="muted" style="margin-top:2.5rem;font-size:15px;line-height:1.7;display:grid;gap:1.5rem"><p>Tranxact Technologies Ltd (&quot;Tranxact&quot;) is a Nigerian company building a wallet that turns inbound crypto into spendable naira.</p><p>If you join the waitlist we collect the email you submit, and optionally your name and how you plan to use Tranxact. We use this only to notify you about early access and product updates. We do not sell this list.</p><p>When the product launches we will collect account information required to operate a payments service (identity, transaction records, device data). That policy will be updated before launch. Crypto deposits are public on-chain; we never ask you to share a private key.</p><p>Contact: <a href="mailto:hello@tranxact.co" style="text-decoration:underline">hello@tranxact.co</a>.</p></div>
+  <p class="subtle" style="font-size:14px">Last updated 2 October 2026</p>
+  <div class="muted" style="margin-top:2.5rem;font-size:15px;line-height:1.7;display:grid;gap:1.5rem"><p>Tranxact Technologies Ltd (&quot;Tranxact&quot;) is a Nigerian company operating a wallet that turns inbound crypto into spendable naira.</p><p>Creating an account means we collect the information required to operate a payments service: your email, identity details for verification, and transaction records. We do not sell this information.</p><p>If you create a payment link without an account, we collect your email, name, phone number and bank account details so we can confirm your email, check your bank account name, reserve your link and pay you. We confirm your email with a one-time code and will ask you to verify your ID before your first payout. We do not sell this information.</p><p>Crypto deposits are public on-chain; we never ask you to share a private key.</p><p>Contact: <a href="mailto:hello@tranxact.co" style="text-decoration:underline">hello@tranxact.co</a>.</p></div>
 </article>
 
 </div><div data-page="terms" hidden>
@@ -710,7 +855,7 @@ footer.site { border-top: 1px solid var(--border); }
   <p class="crumbs"><a href="#/">Home</a> / Terms</p>
   <h1 class="h1" style="font-size:2.5rem;max-width:none">Terms</h1>
   <p class="subtle" style="font-size:14px">Last updated 12 September 2026</p>
-  <div class="muted" style="margin-top:2.5rem;font-size:15px;line-height:1.7;display:grid;gap:1.5rem"><p>Tranxact is currently in waitlist. Joining does not create an account, a deposit facility, or a right to service. Early access may be limited.</p><p>Blockchain transfers cannot be reversed. Sending assets on the wrong network can mean permanent loss. Always match the network shown in the app before you send.</p><p>Demo payment pages on this site do not move real money. They exist to show how TranxactPay will work at launch.</p><p>Fees for conversion, TranxactPay, and bank withdrawals will be disclosed in-app before you confirm. Transfers between Tranxact users are free.</p><p>Questions: <a href="mailto:hello@tranxact.co" style="text-decoration:underline">hello@tranxact.co</a> or WhatsApp +234 705 886 6702.</p></div>
+  <div class="muted" style="margin-top:2.5rem;font-size:15px;line-height:1.7;display:grid;gap:1.5rem"><p>Creating a Tranxact account gives you a real wallet and deposit facility, subject to these terms.</p><p>Blockchain transfers cannot be reversed. Sending assets on the wrong network can mean permanent loss. Always match the network shown in the app before you send.</p><p>Fees for conversion, TranxactPay, and bank withdrawals will be disclosed in-app before you confirm. Transfers between Tranxact users are free.</p><p>Questions: <a href="mailto:hello@tranxact.co" style="text-decoration:underline">hello@tranxact.co</a> or WhatsApp +234 705 886 6702.</p></div>
 </article>
 
 </div>
@@ -727,11 +872,11 @@ footer.site { border-top: 1px solid var(--border); }
       <ul>
         <li><a href="#/product">Wallet</a></li>
         <li><a href="#/pay">TranxactPay</a></li>
+        <li><a href="#/get-paid">Get a payment link</a></li>
         <li><a href="#/pay/aiden-studio">Demo payment link</a></li>
         <li><a href="#/features">Features</a></li>
         <li><a href="#/blog">Blog</a></li>
-        <li><a href="#/waitlist">Waitlist</a></li>
-      </ul>
+        </ul>
     </div>
     <div>
       <p class="eyebrow">Company</p>
@@ -769,45 +914,6 @@ footer.site { border-top: 1px solid var(--border); }
     el.addEventListener("click", () => showPhone(el.dataset.phone));
   });
 
-  // Was only ever saving to localStorage — never reached a real backend,
-  // meaning every "You're on the list" message was shown regardless of
-  // whether anything durable actually happened. This now calls the real
-  // join-waitlist function and only shows success after a real, confirmed
-  // response — with a genuine error path if something actually fails.
-  const WAITLIST_ENDPOINT = "https://lbvjrhpnnsprqulbyacw.supabase.co/functions/v1/join-waitlist";
-  document.addEventListener("submit", (e) => {
-    const form = e.target.closest("form.wait");
-    if (!form) return;
-    e.preventDefault();
-    const email = form.email.value.trim().toLowerCase();
-    const name = (form.person && form.person.value.trim()) || "";
-    const role = form.querySelector(".role.on")?.dataset.role || "personal";
-    const err = form.querySelector(".form-err");
-    if (err) err.textContent = "";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (err) err.textContent = "Enter a valid email so we can reach you.";
-      return;
-    }
-    const btn = form.querySelector("button[type=submit]");
-    const originalText = btn ? btn.textContent : "";
-    if (btn) { btn.disabled = true; btn.textContent = "Joining…"; }
-    fetch(WAITLIST_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, name, role }),
-    })
-      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
-      .then(({ ok, data }) => {
-        if (!ok || data.error) {
-          throw new Error((data && data.error) || "Something went wrong. Please try again.");
-        }
-        form.outerHTML = '<div class="ok"><p style="margin:0;font-weight:600;font-size:18px">You\'re on the list.</p><p class="muted" style="margin:.35rem 0 0;font-size:14px">We\'ll email you the moment early access opens. Join Telegram in the meantime for build updates.</p><a class="btn sm" style="margin-top:1rem" href="https://t.me/tranxacters" target="_blank" rel="noreferrer">Open Telegram</a></div>';
-      })
-      .catch((e2) => {
-        if (err) err.textContent = "Couldn't reach the server. Check your connection and try again.";
-        if (btn) { btn.disabled = false; btn.textContent = originalText; }
-      });
-  });
   document.addEventListener("click", (e) => {
     const role = e.target.closest(".role");
     if (role && role.closest("form.wait")) {
@@ -875,7 +981,7 @@ footer.site { border-top: 1px solid var(--border); }
     privacy: "Privacy | Tranxact",
     terms: "Terms | Tranxact"
   };
-  const homeBits = { waitlist:1, product:1, features:1, "how-it-works":1, faq:1, pay:1, who:1 };
+  const homeBits = { product:1, features:1, "how-it-works":1, faq:1, pay:1, who:1 };
 
   function showPage(id) {
     document.querySelectorAll("[data-page]").forEach((el) => {
@@ -921,6 +1027,13 @@ footer.site { border-top: 1px solid var(--border); }
         return;
       }
     }
+    if (head === "get-paid") {
+      showPage("get-paid");
+      document.title = "Get a payment link | Tranxact";
+      window.scrollTo(0, 0);
+      if (window.__gpShow) window.__gpShow();
+      return;
+    }
     if (head === "privacy" || head === "terms") {
       showPage(head);
       document.title = titles[head];
@@ -941,6 +1054,241 @@ footer.site { border-top: 1px solid var(--border); }
   route();
 })();
 
+</script>
+<script>
+(function () {
+  var EP = "https://lbvjrhpnnsprqulbyacw.supabase.co/functions/v1/guest-payment-link";
+  var root = document.getElementById("gp");
+  if (!root) return;
+
+  // On pay.tranxact.co this file opens straight on the payment-link page.
+  if (/^pay\./i.test(location.hostname) && (!location.hash || location.hash === "#/")) {
+    location.replace(location.pathname + location.search + "#/get-paid");
+  }
+
+  var S = { email: "", token: "", type: "fixed", banks: null, resolved: null, seq: 0, linksUsed: 0, resendTimer: null };
+  var q = function (sel, el) { return (el || root).querySelector(sel); };
+  var qa = function (sel, el) { return Array.prototype.slice.call((el || root).querySelectorAll(sel)); };
+  var ORDER = ["email", "details", "bank", "you", "done"];
+  var MUTED = "var(--muted)", DANGER = "var(--danger)";
+
+  function api(action, data) {
+    var body = { action: action };
+    for (var k in data) if (Object.prototype.hasOwnProperty.call(data, k)) body[k] = data[k];
+    return fetch(EP, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) {
+        return r.json().catch(function () { return { error: "Something went wrong. Please try again." }; })
+          .then(function (j) { j._status = r.status; return j; });
+      })
+      .catch(function () { return { error: "Couldn't reach the server. Check your connection and try again." }; });
+  }
+  function setErr(el, msg, muted) { if (!el) return; el.textContent = msg || ""; el.style.color = muted ? MUTED : DANGER; }
+  function busy(btn, on, label) {
+    if (!btn) return;
+    if (on) { btn.dataset.label = btn.textContent; btn.textContent = label || "One moment…"; btn.disabled = true; }
+    else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; }
+  }
+  function go(step) {
+    qa("[data-gp-step]").forEach(function (s) { s.hidden = s.getAttribute("data-gp-step") !== step; });
+    var n = step === "done" ? 4 : ORDER.indexOf(step) + 1;
+    qa(".gp-prog i").forEach(function (b, i) { b.classList.toggle("on", i < n); });
+    var r = root.getBoundingClientRect();
+    if (r.top < 60 || r.top > window.innerHeight * 0.7) root.scrollIntoView({ block: "start", behavior: "smooth" });
+    var sec = q('[data-gp-step="' + step + '"]');
+    var first = sec && sec.querySelector("input:not([hidden]), select");
+    if (first && step !== "done") { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+  }
+  function titleCase(s) { return String(s || "").toLowerCase().replace(/(^|[\s'\-])([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); }); }
+
+  /* ---------- 1 · email + code ---------- */
+  var emailForm = q('[data-gp-form="email"]');
+  var ask = q('[data-gp-part="ask"]', emailForm), codePart = q('[data-gp-part="code"]', emailForm);
+  var emailIn = q("#gp-email"), codeIn = q("#gp-code");
+  var err1 = q("[data-gp-err]", ask), err2 = q("[data-gp-err2]", codePart);
+  var sendBtn = q("[data-gp-submit]", ask), verifyBtn = q("[data-gp-submit2]", codePart);
+  var resendBtn = q("[data-gp-resend]", codePart);
+
+  function startResend() {
+    var left = 30; clearInterval(S.resendTimer);
+    resendBtn.disabled = true; resendBtn.textContent = "Resend in " + left + "s";
+    S.resendTimer = setInterval(function () {
+      left--; if (left <= 0) { clearInterval(S.resendTimer); resendBtn.disabled = false; resendBtn.textContent = "Resend code"; }
+      else resendBtn.textContent = "Resend in " + left + "s";
+    }, 1000);
+  }
+  function sendCode(isResend) {
+    var email = (isResend ? S.email : emailIn.value).trim().toLowerCase();
+    var errEl = isResend ? err2 : err1;
+    setErr(errEl, "");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setErr(err1, "Enter a valid email address.");
+    busy(isResend ? null : sendBtn, true, "Sending…");
+    api("send_code", { email: email }).then(function (r) {
+      busy(isResend ? null : sendBtn, false);
+      if (!r.ok) return setErr(errEl, r.error || "We couldn't send the code.");
+      S.email = email;
+      q("[data-gp-email-show]", codePart).textContent = email;
+      ask.hidden = true; codePart.hidden = false; codeIn.value = ""; setErr(err2, isResend ? "A new code is on its way." : "", true);
+      startResend(); codeIn.focus();
+    });
+  }
+  var verifying = false;
+  function verify() {
+    var code = codeIn.value.replace(/\D/g, "");
+    if (verifying) return;
+    if (code.length !== 6) return setErr(err2, "Enter the 6-digit code.");
+    verifying = true; setErr(err2, ""); busy(verifyBtn, true, "Checking…");
+    api("verify_code", { email: S.email, code: code }).then(function (r) {
+      verifying = false; busy(verifyBtn, false);
+      if (r.has_account) {
+        setErr(err2, r.error + " ");
+        var a = document.createElement("a");
+        a.href = "https://app.tranxact.co"; a.textContent = "Open Tranxact \u2192";
+        a.style.cssText = "color:var(--fg);font-weight:600;text-decoration:underline;text-underline-offset:3px";
+        err2.appendChild(a);
+        return;
+      }
+      if (!r.ok) { codeIn.select(); return setErr(err2, r.error || "That code isn't right."); }
+      S.token = r.token; go("details"); loadBanks();
+    });
+  }
+  emailForm.addEventListener("submit", function (e) { e.preventDefault(); if (!ask.hidden) sendCode(false); else verify(); });
+  codeIn.addEventListener("input", function () { codeIn.value = codeIn.value.replace(/\D/g, "").slice(0, 6); if (codeIn.value.length === 6) verify(); });
+  resendBtn.addEventListener("click", function () { sendCode(true); });
+  q("[data-gp-change]", codePart).addEventListener("click", function () { clearInterval(S.resendTimer); codePart.hidden = true; ask.hidden = false; setErr(err1, ""); emailIn.focus(); });
+  function sessionLost(msg) {
+    S.token = ""; clearInterval(S.resendTimer); codePart.hidden = true; ask.hidden = false;
+    go("email"); setErr(err1, msg || "Your session expired. Please verify your email again.");
+  }
+
+  /* ---------- 2 · details ---------- */
+  var detailsForm = q('[data-gp-form="details"]');
+  var titleIn = q("#gp-title"), amountIn = q("#gp-amount"), descIn = q("#gp-desc"), amountWrap = q("[data-gp-amountwrap]");
+  var errD = q("[data-gp-err]", detailsForm);
+  qa("[data-gp-type]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      S.type = b.getAttribute("data-gp-type");
+      qa("[data-gp-type]").forEach(function (x) { x.classList.toggle("on", x === b); });
+      amountWrap.hidden = S.type !== "fixed";
+    });
+  });
+  amountIn.addEventListener("input", function () {
+    var d = amountIn.value.replace(/\D/g, "").slice(0, 7);
+    amountIn.value = d ? Number(d).toLocaleString("en-NG") : "";
+  });
+  function amountVal() { return Number(amountIn.value.replace(/\D/g, "")) || 0; }
+  detailsForm.addEventListener("submit", function (e) {
+    e.preventDefault(); setErr(errD, "");
+    if (titleIn.value.trim().length < 2) return setErr(errD, "Give your link a short title.");
+    if (S.type === "fixed" && (amountVal() < 100 || amountVal() > 200000)) return setErr(errD, "Amount must be between ₦100 and ₦200,000.");
+    go("bank");
+  });
+
+  /* ---------- 3 · bank ---------- */
+  var bankForm = q('[data-gp-form="bank"]');
+  var bankSel = q("#gp-bank"), acctIn = q("#gp-acct"), errB = q("[data-gp-err]", bankForm);
+  var nameBox = q("[data-gp-resolved]", bankForm), nameOut = q("[data-gp-acctname]", bankForm), unverified = q("[data-gp-unverified]", bankForm);
+  var bankNext = q("[data-gp-submit]", bankForm);
+
+  function loadBanks() {
+    if (S.banks) return;
+    api("banks", {}).then(function (r) {
+      if (!r.ok || !r.banks) { bankSel.innerHTML = '<option value="">Couldn\'t load banks. Reload the page.</option>'; return; }
+      S.banks = r.banks;
+      bankSel.innerHTML = "";
+      var ph = document.createElement("option"); ph.value = ""; ph.textContent = "Select your bank"; bankSel.appendChild(ph);
+      r.banks.forEach(function (b) { var o = document.createElement("option"); o.value = b.code; o.textContent = b.name; bankSel.appendChild(o); });
+    });
+  }
+  function resetResolve() { S.resolved = null; nameBox.hidden = true; unverified.hidden = true; bankNext.disabled = true; setErr(errB, ""); }
+  function resolve() {
+    resetResolve();
+    var code = bankSel.value, acct = acctIn.value.trim();
+    if (!code || !/^\d{10}$/.test(acct)) return;
+    var my = ++S.seq;
+    setErr(errB, "Checking account…", true);
+    api("resolve", { token: S.token, bank_code: code, account_number: acct }).then(function (r) {
+      if (my !== S.seq) return;                       // a newer check replaced this one
+      if (r._status === 401 && r.session === false) return sessionLost(r.error);
+      if (!r.ok) return setErr(errB, r.error || "We couldn't check that account.");
+      setErr(errB, "");
+      if (r.verified) { S.resolved = { name: r.account_name, verified: true }; nameOut.textContent = r.account_name; nameBox.hidden = false; }
+      else { S.resolved = { name: null, verified: false }; unverified.hidden = false; }
+      bankNext.disabled = false;
+    });
+  }
+  bankSel.addEventListener("change", resolve);
+  acctIn.addEventListener("input", function () { acctIn.value = acctIn.value.replace(/\D/g, "").slice(0, 10); resolve(); });
+  bankForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!S.resolved) return;
+    var nameIn = q("#gp-name");
+    if (S.resolved.verified && !nameIn.value.trim()) nameIn.value = titleCase(S.resolved.name);
+    go("you");
+  });
+
+  /* ---------- 4 · you ---------- */
+  var youForm = q('[data-gp-form="you"]');
+  var nameIn = q("#gp-name"), phoneIn = q("#gp-phone"), errY = q("[data-gp-err]", youForm), createBtn = q("[data-gp-submit]", youForm);
+  youForm.addEventListener("submit", function (e) {
+    e.preventDefault(); setErr(errY, "");
+    var digits = phoneIn.value.replace(/\D/g, "");
+    if (nameIn.value.trim().length < 3) return setErr(errY, "Enter your full name.");
+    if (digits.length < 10 || digits.length > 13) return setErr(errY, "Enter a valid Nigerian mobile number.");
+    busy(createBtn, true, "Creating…");
+    api("create", {
+      token: S.token, title: titleIn.value.trim(), link_type: S.type, amount: S.type === "fixed" ? amountVal() : null,
+      description: descIn.value.trim(), bank_code: bankSel.value,
+      bank_name: bankSel.options[bankSel.selectedIndex] ? bankSel.options[bankSel.selectedIndex].textContent : "",
+      account_number: acctIn.value.trim(), full_name: nameIn.value.trim(), phone: phoneIn.value.trim()
+    }).then(function (r) {
+      busy(createBtn, false);
+      if (r._status === 401 && r.session === false) return sessionLost(r.error);
+      if (!r.ok) return setErr(errY, r.error || "Couldn't create your link.");
+      S.linksUsed = r.links_used || 0;
+      q("[data-gp-done-email]").textContent = S.email;
+      q("[data-gp-done-title]").textContent = titleIn.value.trim() + (S.type === "fixed" ? " · ₦" + amountVal().toLocaleString("en-NG") : " · any amount");
+      q("[data-gp-done-url]").textContent = String(r.link_url || "").replace(/^https?:\/\//, "");
+      q("[data-gp-another]").hidden = S.linksUsed >= 5;
+      S.linkUrl = String(r.link_url || "");
+      var live = r.live === true;
+      q("[data-gp-done-head]").textContent = live ? "Your link is ready." : "Your link is reserved.";
+      q("[data-gp-done-lead]").textContent = live ? "Share it anywhere. We've also emailed it to" : "We've reserved it and emailed the details to";
+      q("[data-gp-badge]").hidden = live;
+      q("[data-gp-live-actions]").hidden = !live;
+      q("[data-gp-done-note]").textContent = live
+        ? "When someone pays, we'll email you and send the money to your bank account."
+        : "We'll email you the moment it goes live, and again whenever someone pays you.";
+      go("done");
+    });
+  });
+
+  /* ---------- back / another ---------- */
+  qa("[data-gp-back]").forEach(function (b) { b.addEventListener("click", function () { go(b.getAttribute("data-gp-back")); }); });
+  q("[data-gp-another]").addEventListener("click", function () {
+    titleIn.value = ""; amountIn.value = ""; descIn.value = ""; setErr(errD, ""); go("details");
+  });
+
+  // A validation message goes away as soon as the person starts fixing the field.
+  [detailsForm, youForm].forEach(function (f) {
+    f.addEventListener("input", function () { setErr(q("[data-gp-err]", f), ""); });
+  });
+  codeIn.addEventListener("input", function () { setErr(err2, ""); });
+  emailIn.addEventListener("input", function () { setErr(err1, ""); });
+
+  var copyBtn = q("[data-gp-copy]"), shareBtn = q("[data-gp-share]");
+  function copyLink() {
+    var done = function () { copyBtn.textContent = "Copied"; setTimeout(function () { copyBtn.textContent = "Copy link"; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(S.linkUrl).then(done, function () {});
+    else { var t = document.createElement("textarea"); t.value = S.linkUrl; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (e) {} t.remove(); }
+  }
+  copyBtn.addEventListener("click", copyLink);
+  shareBtn.addEventListener("click", function () {
+    if (navigator.share) navigator.share({ title: "Pay me on Tranxact", url: S.linkUrl }).catch(function () {});
+    else copyLink();
+  });
+
+  window.__gpShow = function () { if (S.token && !S.banks) loadBanks(); };
+})();
 </script>
 </body>
 </html>
