@@ -256,6 +256,10 @@ footer.site { border-top: 1px solid var(--border); }
 .gp-center { text-align: center; }
 .gp-pre { margin-bottom: .25rem; }
 .gp-card [hidden] { display: none !important; }
+.gp-at { position: relative; }
+.gp-at span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--subtle); font-size: 16px; pointer-events: none; }
+.gp-at input { padding-left: 30px !important; }
+.gp-ok { color: var(--muted) !important; }
 .gp-card { scroll-margin-top: 90px; }
 /* On phones the form comes straight after the headline; the reasons sit below it. */
 @media (max-width: 899px) {
@@ -458,7 +462,7 @@ footer.site { border-top: 1px solid var(--border); }
 <section class="section border" id="no-account"><div class="wrap">
   <p class="eyebrow">New · No account needed</p>
   <h2 class="h2">No account? You can still get paid.</h2>
-  <p class="muted" style="margin:1.25rem 0 0;max-width:36rem;font-size:16px">Need to get paid today but don't want another app? Get a payment link with just your email and a Nigerian bank account. Open a free Tranxact account later with the same email, and your links and payments come with you.</p>
+  <p class="muted" style="margin:1.25rem 0 0;max-width:36rem;font-size:16px">Need to get paid today but don't want another app? Get a payment link with just your email and a Nigerian bank account. Sign in to Tranxact with the same email whenever you like: your username, links and payments are already there.</p>
   <div class="cards-3"><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">01</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Confirm your email</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">We send a 6-digit code. It proves the email is yours, and it's where we'll tell you every time you're paid.</p></article><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">02</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Add your bank account</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">We show the account name before you continue, so the people paying you know the money is going to the right person.</p></article><article class="card"><p class="mono subtle" style="margin:0;font-size:12px">03</p><h3 style="margin:1rem 0 0;font-size:1.25rem">Share it and get paid</h3><p class="muted" style="margin:.75rem 0 0;font-size:15px;line-height:1.6">Payers use the same secure TranxactPay checkout. We email you when the money lands and send it straight to your bank.</p></article></div>
   <div class="cta-row" style="margin-top:2rem"><a class="btn lg" href="#/get-paid">Get a payment link</a><a class="btn lg sec" href="#/faq">How limits and fees work</a></div>
 </div></section>
@@ -499,7 +503,7 @@ footer.site { border-top: 1px solid var(--border); }
 <section class="section border" id="faq"><div class="wrap faq">
   <p class="eyebrow">FAQ</p>
   <h2 class="h2">Questions people actually ask</h2>
-  <div class="faq-list"><details><summary>Is Tranxact a registered company?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Tranxact Technologies Ltd is registered with the Corporate Affairs Commission (CAC) in Nigeria.</p></details><details><summary>Which cryptocurrencies can I receive?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Seven, currently: BTC, ETH, BNB, USDT, USDC, TRX, and SOL. Whatever comes in is converted to naira automatically and credited to your main balance. No separate crypto wallet to manage.</p></details><details><summary>What happens if I send crypto on the wrong network?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Blockchain transactions can&#x27;t be reversed once sent. If crypto is sent on a different network than the address was generated for, those funds may be permanently unrecoverable. Always double-check the network shown before sending. This is the most important thing to get right.</p></details><details><summary>Are there fees?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Sending money to other Tranxact users is free. Small fees apply to crypto conversion, TranxactPay transactions, and bank withdrawals. The exact amount is always shown before you confirm. Payment links without an account cost ₦100 per payment, plus the usual payout fee of ₦25 to ₦150 when we send the money to your bank.</p></details><details><summary>Can my business accept payments?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Create a payment link, a QR code, or a Tip Me link from the app and share it anywhere. Every payment lands directly in your Tranxact balance.</p></details><details><summary>Can I get paid without a Tranxact account?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. <a href="#/get-paid" style="text-decoration:underline;text-underline-offset:3px">Get a payment link</a> with just your email and a Nigerian bank account. We confirm your email with a code and check the bank account name. People pay through the same secure TranxactPay checkout, and we email you and send the money to your bank. Payment links without an account have a receiving limit. Past it, we'll ask you to open a free account and verify your ID. When you open an account with the same email, your links and payment history move into it automatically.</p></details><details><summary>How do I get help?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">WhatsApp +234 705 886 6702, hello@tranxact.co, or X @tranxactng. Real replies from real people.</p></details></div>
+  <div class="faq-list"><details><summary>Is Tranxact a registered company?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Tranxact Technologies Ltd is registered with the Corporate Affairs Commission (CAC) in Nigeria.</p></details><details><summary>Which cryptocurrencies can I receive?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Seven, currently: BTC, ETH, BNB, USDT, USDC, TRX, and SOL. Whatever comes in is converted to naira automatically and credited to your main balance. No separate crypto wallet to manage.</p></details><details><summary>What happens if I send crypto on the wrong network?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Blockchain transactions can&#x27;t be reversed once sent. If crypto is sent on a different network than the address was generated for, those funds may be permanently unrecoverable. Always double-check the network shown before sending. This is the most important thing to get right.</p></details><details><summary>Are there fees?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Sending money to other Tranxact users is free. Small fees apply to crypto conversion, TranxactPay transactions, and bank withdrawals. The exact amount is always shown before you confirm. Payment links without an account cost ₦100 per payment, plus the usual payout fee of ₦25 to ₦150 when we send the money to your bank.</p></details><details><summary>Can my business accept payments?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. Create a payment link, a QR code, or a Tip Me link from the app and share it anywhere. Every payment lands directly in your Tranxact balance.</p></details><details><summary>Can I get paid without a Tranxact account?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">Yes. <a href="#/get-paid" style="text-decoration:underline;text-underline-offset:3px">Get a payment link</a> with just your email and a Nigerian bank account. We confirm your email with a code and check the bank account name. People pay through the same secure TranxactPay checkout, and we email you and send the money to your bank. Without signing in, you can receive up to ₦200,000. Sign in to Tranxact with the same email to keep receiving, up to ₦1,000,000 before you verify your ID. Your username, links and payments are already in your account.</p></details><details><summary>How do I get help?<span class="plus">+</span></summary><p class="muted" style="margin:.75rem 0 0;font-size:15px;max-width:60ch">WhatsApp +234 705 886 6702, hello@tranxact.co, or X @tranxactng. Real replies from real people.</p></details></div>
 </div></section><section class="section border"><div class="wrap">
   <div class="cta-box">
     <div>
@@ -755,12 +759,12 @@ footer.site { border-top: 1px solid var(--border); }
     <div class="gp-points">
       <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>No account needed</b><span class="muted">Your email and a bank account are enough to start.</span></div></div>
       <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Paid straight to your bank</b><span class="muted">Money goes to the account you choose, and we email you each time someone pays.</span></div></div>
-      <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Keep everything when you join</b><span class="muted">Open a free Tranxact account with the same email and your links and payment history move into it automatically.</span></div></div>
+      <div class="gp-point"><span class="gp-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Your account is ready when you are</b><span class="muted">Sign in to Tranxact with the same email any time. Your username, links and payments are already there.</span></div></div>
     </div>
   </div>
 
   <div class="gp-card" id="gp">
-    <span class="kicker gp-pre">New · reserve your link now</span>
+    <span class="kicker gp-pre">No account needed</span>
     <div class="gp-prog" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
 
     <!-- 1 · email + code -->
@@ -818,9 +822,10 @@ footer.site { border-top: 1px solid var(--border); }
       <form data-gp-form="you" novalidate>
         <h2 class="gp-h">Confirm who you are.</h2>
         <p class="gp-sub">This keeps payments safe for you and the people paying you.</p>
+        <div class="gp-field"><label for="gp-username">Username</label><div class="gp-at"><span>@</span><input id="gp-username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" placeholder="yourname"></div><p class="gp-note" data-gp-uname-hint style="margin-top:.45rem">This becomes your Tranxact username.</p></div>
         <div class="gp-field"><label for="gp-name">Full name</label><input id="gp-name" type="text" autocomplete="name" maxlength="80" placeholder="As it appears on your bank account"></div>
         <div class="gp-field"><label for="gp-phone">Phone number</label><input id="gp-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0803 000 0000" maxlength="20"></div>
-        <p class="gp-note">Your name must match your bank account name. Before your first payout, we'll ask you to verify your ID.</p>
+        <p class="gp-note">Your name must match your bank account name.</p>
         <p class="gp-err" role="alert" data-gp-err></p>
         <div class="gp-actions"><button class="btn sec lg" type="button" data-gp-back="bank" style="flex:0 0 auto">Back</button><button class="btn lg" type="submit" data-gp-submit>Create my link</button></div>
       </form>
@@ -833,6 +838,7 @@ footer.site { border-top: 1px solid var(--border); }
       <p class="gp-sub gp-center"><span data-gp-done-lead>We've reserved it and emailed the details to</span> <b data-gp-done-email style="color:var(--fg)"></b>.</p>
       <div class="gp-link"><div class="t" data-gp-done-title></div><div class="u" data-gp-done-url></div><span class="gp-badge" data-gp-badge>Reserved · not live yet</span></div>
       <div class="gp-actions" data-gp-live-actions hidden><button class="btn lg" type="button" data-gp-copy>Copy link</button><button class="btn sec lg" type="button" data-gp-share>Share</button></div>
+      <p class="gp-note gp-center" data-gp-done-user></p>
       <p class="gp-note gp-center" data-gp-done-note>We'll email you the moment it goes live, and again whenever someone pays you.</p>
       <div class="gp-actions"><a class="btn sec lg" href="#/">Back home</a><button class="btn lg" type="button" data-gp-another>Create another link</button></div>
     </section>
@@ -1148,7 +1154,8 @@ footer.site { border-top: 1px solid var(--border); }
         return;
       }
       if (!r.ok) { codeIn.select(); return setErr(err2, r.error || "That code isn't right."); }
-      S.token = r.token; go("details"); loadBanks();
+      S.token = r.token; S.existingUsername = r.existing_username || null; applyExistingUsername();
+      go("details"); loadBanks();
     });
   }
   emailForm.addEventListener("submit", function (e) { e.preventDefault(); if (!ask.hidden) sendCode(false); else verify(); });
@@ -1226,12 +1233,41 @@ footer.site { border-top: 1px solid var(--border); }
     go("you");
   });
 
+  /* ---------- username ---------- */
+  var unameIn = q("#gp-username"), unameHint = q("[data-gp-uname-hint]");
+  S.unameOk = false;
+  var unameTimer = null, unameSeq = 0;
+  function setHint(text, ok) { unameHint.textContent = text; unameHint.style.color = ok === false ? DANGER : MUTED; }
+  function applyExistingUsername() {
+    if (S.existingUsername) {
+      unameIn.value = S.existingUsername; unameIn.disabled = true; S.unameOk = true;
+      setHint("Your Tranxact username. Your new link will be added to this account.", true);
+    } else { unameIn.disabled = false; S.unameOk = false; setHint("This becomes your Tranxact username.", true); }
+  }
+  unameIn.addEventListener("input", function () {
+    var v = unameIn.value.toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 20);
+    if (v !== unameIn.value) unameIn.value = v;
+    S.unameOk = false; clearTimeout(unameTimer);
+    if (v.length < 3) { setHint(v ? "At least 3 characters: letters, numbers or underscores." : "This becomes your Tranxact username.", v ? false : true); return; }
+    setHint("Checking\u2026", true);
+    var my = ++unameSeq;
+    unameTimer = setTimeout(function () {
+      api("check_username", { token: S.token, username: v }).then(function (r) {
+        if (my !== unameSeq) return;
+        if (r._status === 401 && r.session === false) return sessionLost(r.error);
+        if (r.ok && r.available) { S.unameOk = true; setHint("@" + v + " is available.", true); }
+        else setHint((r.reason || r.error || "That username isn't available."), false);
+      });
+    }, 350);
+  });
+
   /* ---------- 4 · you ---------- */
   var youForm = q('[data-gp-form="you"]');
   var nameIn = q("#gp-name"), phoneIn = q("#gp-phone"), errY = q("[data-gp-err]", youForm), createBtn = q("[data-gp-submit]", youForm);
   youForm.addEventListener("submit", function (e) {
     e.preventDefault(); setErr(errY, "");
     var digits = phoneIn.value.replace(/\D/g, "");
+    if (!S.unameOk) return setErr(errY, "Choose an available username.");
     if (nameIn.value.trim().length < 3) return setErr(errY, "Enter your full name.");
     if (digits.length < 10 || digits.length > 13) return setErr(errY, "Enter a valid Nigerian mobile number.");
     busy(createBtn, true, "Creating…");
@@ -1239,7 +1275,8 @@ footer.site { border-top: 1px solid var(--border); }
       token: S.token, title: titleIn.value.trim(), link_type: S.type, amount: S.type === "fixed" ? amountVal() : null,
       description: descIn.value.trim(), bank_code: bankSel.value,
       bank_name: bankSel.options[bankSel.selectedIndex] ? bankSel.options[bankSel.selectedIndex].textContent : "",
-      account_number: acctIn.value.trim(), full_name: nameIn.value.trim(), phone: phoneIn.value.trim()
+      account_number: acctIn.value.trim(), full_name: nameIn.value.trim(), phone: phoneIn.value.trim(),
+      username: unameIn.value.trim()
     }).then(function (r) {
       busy(createBtn, false);
       if (r._status === 401 && r.session === false) return sessionLost(r.error);
@@ -1250,6 +1287,8 @@ footer.site { border-top: 1px solid var(--border); }
       q("[data-gp-done-url]").textContent = String(r.link_url || "").replace(/^https?:\/\//, "");
       q("[data-gp-another]").hidden = S.linksUsed >= 5;
       S.linkUrl = String(r.link_url || "");
+      if (r.username) { S.existingUsername = r.username; applyExistingUsername(); }
+      q("[data-gp-done-user]").textContent = r.username ? "Your Tranxact username is @" + r.username + ". Sign in with this email any time." : "";
       var live = r.live === true;
       q("[data-gp-done-head]").textContent = live ? "Your link is ready." : "Your link is reserved.";
       q("[data-gp-done-lead]").textContent = live ? "Share it anywhere. We've also emailed it to" : "We've reserved it and emailed the details to";
