@@ -66,24 +66,6 @@
   .c3{right:4%;top:20%;animation:drop 4.5s ease-in-out 1s infinite}
   @keyframes drop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   @keyframes bob{0%,100%{transform:translate(-50%,-50%) rotate(-6deg)}50%{transform:translate(-50%,-52%) rotate(-4deg)}}
-  .watch{display:inline-flex;align-items:center;gap:10px;margin-top:16px;color:var(--ink);background:none;border:0;padding:0;font-size:15px;font-weight:600;cursor:pointer}
-  .watch .pl{width:34px;height:34px;border-radius:50%;background:var(--purple);display:grid;place-items:center;box-shadow:0 0 20px rgba(139,92,246,.5)}
-  .watch .pl svg{margin-left:2px}
-  .watch span.t{border-bottom:1px solid rgba(255,255,255,.25)}
-  .how{padding-block:20px 70px}
-  .how h3{font-size:clamp(30px,4vw,44px);letter-spacing:-.04em;margin:0 0 6px}
-  .how p{color:var(--soft);margin:0 0 22px;font-size:17px}
-  .vid{position:relative;width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0c0c0e;cursor:pointer;aspect-ratio:16/9}
-  .vid img{width:100%;height:100%;object-fit:cover;display:block}
-  .vid .big{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 60%,rgba(0,0,0,.35))}
-  .vid .big i{width:84px;height:84px;border-radius:50%;background:var(--purple);display:grid;place-items:center;box-shadow:0 10px 40px rgba(139,92,246,.6);transition:transform .15s}
-  .vid:hover .big i{transform:scale(1.06)}
-  .vid video{width:100%;height:100%;display:block;background:#000}
-  .modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:16px}
-  .modal.on{display:flex}
-  .modal video{width:min(100%,1100px);max-height:86vh;border-radius:16px;background:#000}
-  .modal .x{position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;width:44px;height:44px;border-radius:50%;border:1px solid #333;background:#111;color:#fff;font-size:22px;cursor:pointer}
-  @media (max-width:860px){.vid{aspect-ratio:1/1}.modal video{width:100%}}
   footer{padding:28px 0;color:#6b6b73;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   footer a{color:#9a9aa3;text-decoration:none}
   @media (max-width:860px){
@@ -129,8 +111,6 @@
         Join the Telegram community
       </a>
 
-      <div><button class="watch" type="button" id="watch"><span class="pl"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><span class="t">Watch the 45-second tour</span></button></div>
-
       <ul class="points">
         <li>Your own crypto address</li><li>Naira at today's rate</li><li>Send to any bank</li><li>Pay bills</li><li>Payment links</li>
       </ul>
@@ -142,17 +122,6 @@
     </div>
   </section>
 </main>
-
-<section class="wrap how" id="how">
-  <h3>See how it works</h3>
-  <p>A 45-second tour of the app.</p>
-  <div class="vid" id="vid" role="button" tabindex="0" aria-label="Play the Tranxact tour video">
-    <img id="poster" alt="" loading="lazy">
-    <div class="big"><i><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M7 4l14 8-14 8z"/></svg></i></div>
-  </div>
-</section>
-
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Tranxact tour"><button class="x" id="x" aria-label="Close">×</button><video id="mv" controls playsinline preload="none"></video></div>
 
 <footer class="wrap">
   <span>© <span id="y"></span> Tranxact Technologies Ltd</span>
@@ -167,27 +136,6 @@
 
   document.getElementById('y').textContent = new Date().getFullYear();
   ['tg1', 'tg2'].forEach(id => document.getElementById(id).href = TELEGRAM_LINK);
-
-  // ---- Tour video: square on phones, widescreen on bigger screens. Nothing downloads until someone taps play. ----
-  const small = window.matchMedia('(max-width: 860px)').matches;
-  const VIDEO = small ? 'media/tour-1x1.mp4' : 'media/tour-16x9.mp4';
-  const POSTER = small ? 'media/tour-1x1.jpg' : 'media/tour-16x9.jpg';
-  document.getElementById('poster').src = POSTER;
-  const vid = document.getElementById('vid');
-  const playInline = () => {
-    if (vid.querySelector('video')) return;
-    vid.innerHTML = '';
-    const v = document.createElement('video'); v.src = VIDEO; v.controls = true; v.playsInline = true; v.autoplay = true; v.poster = POSTER;
-    vid.appendChild(v); v.play().catch(() => {});
-  };
-  vid.addEventListener('click', playInline);
-  vid.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); playInline(); } });
-  const modal = document.getElementById('modal'), mv = document.getElementById('mv');
-  const close = () => { mv.pause(); modal.classList.remove('on'); };
-  document.getElementById('watch').addEventListener('click', () => { if (!mv.src) { mv.src = VIDEO; mv.poster = POSTER; } modal.classList.add('on'); mv.currentTime = 0; mv.play().catch(() => {}); });
-  document.getElementById('x').addEventListener('click', close);
-  modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
-  document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
 
   const f = document.getElementById('f'), e = document.getElementById('email'), b = document.getElementById('b'), m = document.getElementById('m');
   f.addEventListener('submit', async (ev) => {
