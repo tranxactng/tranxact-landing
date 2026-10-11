@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tranxact | Crypto in. Naira out.</title>
-<meta name="description" content="Receive crypto, get naira, send to any Nigerian bank, pay bills and get paid with a link, all in one app. Join the waitlist.">
-<meta property="og:title" content="Tranxact | Crypto in. Naira out.">
-<meta property="og:description" content="Receive crypto, get naira, send, pay bills and get paid with a link. Join the waitlist.">
+<title>Tranxact | Money, Simplified.</title>
+<meta name="description" content="Money, simplified. Receive crypto, get naira automatically. Send, pay bills, and get paid from one Tranxact balance. Join the waitlist.">
+<meta property="og:title" content="Tranxact | Money, Simplified.">
+<meta property="og:description" content="Money, simplified. Receive crypto, get naira automatically. Send, pay bills, and get paid from one Tranxact balance.">
 <meta property="og:image" content="https://app.tranxact.co/icon-512.png">
 <meta property="og:url" content="https://tranxact.co">
 <meta name="twitter:card" content="summary">
@@ -26,10 +26,10 @@
   body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
     background:radial-gradient(900px 600px at 80% 30%, rgba(139,92,246,.18), transparent 65%), var(--bg)}
   .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
-  header{padding:28px 0}
-  .brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;font-size:20px;letter-spacing:-.02em}
+  header.wrap{padding-top:calc(24px + env(safe-area-inset-top));padding-bottom:8px}
+  .brand{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
   main{flex:1;display:flex;align-items:center}
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:24px 0 56px}
+  .hero{max-width:640px;padding:56px 0 64px}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#c4b5fd;
     border:1px solid rgba(139,92,246,.35);background:rgba(139,92,246,.08);padding:7px 12px;border-radius:999px;margin-bottom:22px}
   .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--purple);box-shadow:0 0 10px var(--purple)}
@@ -54,44 +54,44 @@
   .small{font-size:13px;color:#6b6b73;margin-top:16px}
   .points{list-style:none;padding:0;margin:34px 0 0;display:flex;flex-wrap:wrap;gap:8px}
   .points li{font-size:14px;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
-  /* art */
-  .art{position:relative;aspect-ratio:1;max-width:440px;width:100%;justify-self:center}
-  .tile{position:absolute;left:50%;top:56%;width:44%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-6deg);border-radius:26%;
-    background:linear-gradient(135deg,#9d74ff,#7A49EA);box-shadow:0 40px 80px -24px rgba(122,73,234,.7);display:grid;place-items:center;animation:bob 6s ease-in-out infinite}
-  .tile svg{width:62%}
-  .coin{position:absolute;width:18%;aspect-ratio:1;border-radius:50%;background:linear-gradient(#2a2a2a,#0d0d0d);border:2px solid #3a3a3a;display:grid;place-items:center;
-    font-family:var(--mono);font-weight:600;font-size:clamp(18px,3vw,28px);color:#fff;box-shadow:0 18px 40px -14px rgba(0,0,0,.8)}
-  .c1{left:4%;top:16%;animation:drop 4.5s ease-in-out infinite}
-  .c2{left:41%;top:2%;animation:drop 4.5s ease-in-out .5s infinite}
-  .c3{right:4%;top:20%;animation:drop 4.5s ease-in-out 1s infinite}
-  @keyframes drop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  @keyframes bob{0%,100%{transform:translate(-50%,-50%) rotate(-6deg)}50%{transform:translate(-50%,-52%) rotate(-4deg)}}
-  footer{padding:28px 0;color:#6b6b73;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  footer a{color:#9a9aa3;text-decoration:none}
+  footer{border-top:1px solid var(--line);padding:48px 0 40px;margin-top:20px}
+  .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:28px 16px;margin-bottom:28px}
+  .footer-col{display:flex;flex-direction:column;gap:12px;font-size:15px}
+  .footer-col a{color:var(--soft);text-decoration:none}.footer-col a:hover{color:var(--ink)}
+  .footer-col:last-child{margin-left:auto}
+  .footer-h,.footer-h2{font-size:24px;font-weight:700;letter-spacing:-.025em;color:var(--ink);line-height:1.1}
+  .footer-h{margin-bottom:8px}
+  .footer-contact-block{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;margin:12px 0 28px}
+  .footer-mail{font-size:15px;color:var(--soft);text-decoration:none}.footer-mail:hover{color:var(--purple)}
+  .footer-socials{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .footer-socials a{width:36px;height:36px;border-radius:50%;background:#0d0d0d;border:1px solid #0d0d0d;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s,transform .2s}
+  .footer-socials a:hover{background:var(--purple);transform:translateY(-2px)}
+  .footer-socials a svg{width:16px;height:16px}
+  .footer-legal{text-align:center;font-size:13px;color:var(--soft);margin-bottom:10px}
+  .footer-copy{font-size:13px;color:#6b6b73;padding-top:20px;border-top:1px solid var(--line);text-align:center}
+  @media (max-width:420px){.footer-socials{gap:7px}.footer-socials a{width:34px;height:34px}}
   @media (max-width:860px){
-    .hero{grid-template-columns:1fr;gap:20px;padding-top:4px}
-    .art{max-width:300px;order:-1}
+    .hero{padding-top:40px}
     form{flex-direction:column}
     button{width:100%}
     .tg{width:100%}
   }
-  @media (prefers-reduced-motion:reduce){.tile,.coin{animation:none}}
 </style>
 </head>
 <body>
 <header class="wrap">
   <a class="brand" href="/" aria-label="Tranxact home">
-    <svg width="34" height="28" viewBox="0 0 286 236" aria-hidden="true" fill="#fff"><rect x="48" y="0" width="111" height="34" rx="17"/><rect x="48" y="50" width="111" height="34" rx="17"/><rect x="0" y="100" width="256" height="34" rx="17"/><rect x="62" y="150" width="114" height="34" rx="17"/><rect x="87" y="200" width="199" height="34" rx="17"/></svg>
+    <svg width="24" height="20" viewBox="0 0 286 236" aria-hidden="true" fill="#fff"><rect x="48" y="0" width="111" height="34" rx="17"/><rect x="48" y="50" width="111" height="34" rx="17"/><rect x="0" y="100" width="256" height="34" rx="17"/><rect x="62" y="150" width="114" height="34" rx="17"/><rect x="87" y="200" width="199" height="34" rx="17"/></svg>
     Tranxact
   </a>
 </header>
 
 <main class="wrap">
-  <section class="hero">
+  <section class="hero" id="join">
     <div>
       <div class="eyebrow"><i></i>Early access</div>
-      <h1>Crypto in.<br><em>Naira</em> out.</h1>
-      <p class="lead">Receive crypto and get naira. Send to any Nigerian bank, pay bills, and get paid with a link, all in one app.</p>
+      <h1>Money.<br><em>Simplified.</em></h1>
+      <p class="lead">Receive crypto from anywhere. Get naira automatically. Send to banks, pay bills, and get paid without waiting on a P2P buyer.</p>
 
       <form id="f" novalidate>
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
@@ -112,20 +112,45 @@
       </a>
 
       <ul class="points">
-        <li>Your own crypto address</li><li>Naira at today's rate</li><li>Send to any bank</li><li>Pay bills</li><li>Payment links</li>
+        <li>Your own crypto address</li><li>Naira at today's rate</li><li>Send to any bank</li><li>Airtime &amp; data</li><li>Electricity &amp; TV</li><li>Payment links</li>
       </ul>
     </div>
 
-    <div class="art" aria-hidden="true">
-      <div class="coin c1">₿</div><div class="coin c2">Ξ</div><div class="coin c3">₮</div>
-      <div class="tile"><svg viewBox="0 0 100 100"><g fill="#fff"><rect x="21" y="16" width="16" height="68" rx="2"/><rect x="63" y="16" width="16" height="68" rx="2"/><polygon points="21,16 37,16 79,84 63,84"/><rect x="9" y="38" width="82" height="9" rx="2"/><rect x="9" y="53" width="82" height="9" rx="2"/></g></svg></div>
-    </div>
   </section>
 </main>
 
-<footer class="wrap">
-  <span>© <span id="y"></span> Tranxact Technologies Ltd</span>
-  <a href="mailto:hello@tranxact.co">hello@tranxact.co</a>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <nav class="footer-col" aria-label="Product">
+        <div class="footer-h">Product</div>
+        <a href="#join">Join the waitlist</a>
+        <a href="https://t.me/tranxacters" target="_blank" rel="noopener">Community</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <div class="footer-h">Company</div>
+        <a href="/blog/">Blog</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/esign.html">Electronic Consent</a>
+      </nav>
+    </div>
+    <div class="footer-contact-block">
+      <div class="footer-h2">Contact us</div>
+      <a class="footer-mail" href="mailto:hello@tranxact.co">hello@tranxact.co</a>
+      <div class="footer-socials">
+        <a href="https://x.com/tranxactng" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg></a>
+        <a href="https://tiktok.com/@tranxact" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M16.6 5.8c-.9-.9-1.4-2.1-1.4-3.4h-3.2v13.6c0 1.5-1.2 2.7-2.7 2.7s-2.7-1.2-2.7-2.7 1.2-2.7 2.7-2.7c.3 0 .6 0 .8.1V10c-.3 0-.5-.1-.8-.1-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V9.1c1.3.9 2.8 1.5 4.5 1.5V7.4c-1.2 0-2.3-.5-3.2-1.6z"/></svg></a>
+        <a href="https://instagram.com/tranxactng" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://youtube.com/@tranxact" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10 9 15 12 10 15 10 9" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://snapchat.com/add/tranxact" target="_blank" rel="noopener" aria-label="Snapchat"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2c3 0 4.6 2.2 4.7 4.8.1 1.2.1 1.6.2 1.8.2.3 1 .5 1.6.7.4.1.6.6.4 1-.1.3-.6.9-1.4 1.3.1.4.1.9-.1 1.4-.3.6-1 1-1.7 1.1-.2 1-1 1.7-2 2.1-.3 1-1.6 1.7-3.7 1.7s-3.4-.7-3.7-1.7c-1-.4-1.8-1.1-2-2.1-.7-.1-1.4-.5-1.7-1.1-.2-.5-.2-1-.1-1.4-.8-.4-1.3-1-1.4-1.3-.2-.4 0-.9.4-1 .6-.2 1.4-.4 1.6-.7.1-.2.1-.6.2-1.8C7.4 4.2 9 2 12 2z"/></svg></a>
+        <a href="https://www.linkedin.com/company/tranxact-technologies-ltd/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="https://wa.me/2347058866702" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg></a>
+        <a href="https://t.me/Tranxacters" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21.5 3.5 2.7 10.9c-1.1.4-1.1 1.6 0 2l4.7 1.5 1.8 5.7c.2.7 1.1.9 1.6.4l2.6-2.5 4.9 3.6c.7.5 1.8.1 1.9-.7l3-15.1c.2-.9-.7-1.6-1.7-1.3zM8.5 14.2l9-5.7c.4-.3.8.2.4.5l-7.3 6.6-.3 3.1-1.6-4.5z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-legal">Registered with the Corporate Affairs Commission, Nigeria</div>
+    <div class="footer-copy">© <span id="y"></span> Tranxact Technologies Ltd. Money, simplified.</div>
+  </div>
 </footer>
 
 <script>
